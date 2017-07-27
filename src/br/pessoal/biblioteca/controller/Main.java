@@ -4,6 +4,8 @@ package br.pessoal.biblioteca.controller;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import br.pessoal.biblioteca.to.UsuarioTO;
+import br.pessoal.biblioteca.view.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,13 +16,17 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
 	private Stage primaryStage;
+	private UsuarioTO usuarioTO;
 	Logger logger = Logger.getLogger(Main.class.getName());
-	
+		
+	public Main() {		
+	}
+
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Login");
-		this.primaryStage.getIcons().add(new Image("/br/pessoal/biblioteca/resource/Bookmark.png"));
+		this.primaryStage.getIcons().add(new Image("file:imagem/Bookmark.png"));
 		
 		mostrarJanelaLogin();
 	}
@@ -34,14 +40,24 @@ public class Main extends Application {
 			Scene cena = new Scene(login);
 			this.primaryStage.setScene(cena);
 			
+			LoginController loginController = loader.getController();
+			loginController.setMain(this);
+			
 			this.primaryStage.show();
 		}catch (Exception e) {
-			logger.log(Level.SEVERE, "Erro ao carregar a janela de Login: {0}", e);
+			logger.log(Level.SEVERE, "Erro ao carregar a janela de Login:", e);
 		}
 	}
 
 	public static void main(String[] args) {
 		launch(args);
+	}
+	
+	public UsuarioTO getUsuarioTO() {
+		return usuarioTO;
+	}
+	public void setUsuarioTO(UsuarioTO usuarioTO) {
+		this.usuarioTO = usuarioTO;
 	}
 
 	public Stage getPrimaryStage() {
