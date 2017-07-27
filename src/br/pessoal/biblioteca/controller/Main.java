@@ -27,6 +27,7 @@ public class Main extends Application {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Login");
 		this.primaryStage.getIcons().add(new Image("file:imagem/Bookmark.png"));
+		this.primaryStage.setResizable(false);
 		
 		mostrarJanelaLogin();
 	}

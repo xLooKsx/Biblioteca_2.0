@@ -7,42 +7,42 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="258.0" prefWidth="207.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.pessoal.biblioteca.view.LoginController">
+<AnchorPane prefHeight="258.0" prefWidth="174.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.pessoal.biblioteca.view.LoginController">
    <children>
-      <Label layoutX="85.0" layoutY="64.0" text="Login">
+      <Label layoutX="85.0" layoutY="64.0" text="Login" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="85.0">
          <font>
             <Font name="Brush Script MT Italic" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="13.0" layoutY="85.0" text="Usuario:">
+      <Label layoutX="13.0" layoutY="85.0" text="Usuario:" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="149.0" AnchorPane.topAnchor="85.0">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="13.0" layoutY="137.0" text="Senha:">
+      <Label layoutX="13.0" layoutY="137.0" text="Senha:" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="155.0">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="txtUsuario" layoutX="33.0" layoutY="102.0" />
-      <PasswordField fx:id="pwSenha" layoutX="33.0" layoutY="154.0" />
-      <Label fx:id="lblMensagemErro" layoutX="33.0" layoutY="202.0" prefHeight="15.0" prefWidth="149.0" text="(mensagem de erro aqui)" textFill="RED">
+      <TextField fx:id="txtUsuario" layoutX="33.0" layoutY="102.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="25.0" />
+      <PasswordField fx:id="pwSenha" layoutX="33.0" layoutY="154.0" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="25.0" />
+      <Label fx:id="lblMensagemErro" layoutX="33.0" layoutY="202.0" prefHeight="15.0" prefWidth="149.0" text="(mensagem de erro aqui)" textFill="RED" AnchorPane.leftAnchor="33.0" AnchorPane.rightAnchor="25.0">
          <font>
             <Font name="Arial Italic" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="85.0" layoutY="185.0" text="esqueceu a senha?" textFill="#365fa1" underline="true">
+      <Label layoutX="85.0" layoutY="185.0" text="esqueceu a senha?" textFill="#365fa1" underline="true" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="18.0">
          <font>
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Label>
-      <Button layoutX="125.0" layoutY="217.0" mnemonicParsing="false" onAction="#handleEntrar" prefHeight="17.0" prefWidth="70.0" text="Entrar" />
-      <Label layoutX="56.0" layoutY="24.0" text="Biblioteca">
+      <Button layoutX="128.0" layoutY="217.0" mnemonicParsing="false" onAction="#handleEntrar" prefHeight="17.0" prefWidth="70.0" text="Entrar" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="128.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="217.0" />
+      <Label layoutX="58.0" layoutY="25.0" prefHeight="19.0" prefWidth="70.0" text="Biblioteca" AnchorPane.leftAnchor="58.0" AnchorPane.rightAnchor="79.0" AnchorPane.topAnchor="25.0">
          <font>
             <Font name="System Bold Italic" size="13.0" />
          </font>
       </Label>
-      <ImageView fitHeight="37.0" fitWidth="39.0" layoutX="13.0" layoutY="6.0">
+      <ImageView fitHeight="37.0" fitWidth="39.0" layoutX="13.0" layoutY="6.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="6.0">
          <image>
             <Image url="@../../../../../imagem/livro.png" />
          </image>
