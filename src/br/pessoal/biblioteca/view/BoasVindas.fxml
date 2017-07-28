@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="424.0" prefWidth="457.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="14.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buscar por titulo:" />
+      <TextField layoutX="110.0" layoutY="40.0" prefHeight="25.0" prefWidth="191.0" />
+      <Button defaultButton="true" layoutX="310.0" layoutY="40.0" mnemonicParsing="false" text="Buscar" />
+      <TableView layoutX="15.0" layoutY="105.0" prefHeight="84.0" prefWidth="427.0">
+        <columns>
+          <TableColumn prefWidth="139.0" text="Id" />
+            <TableColumn prefWidth="287.0" text="Nome" />
+        </columns>
+      </TableView>
+      <Pane layoutX="15.0" layoutY="199.0" prefHeight="195.0" prefWidth="427.0">
+         <children>
+            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Text layoutX="126.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" />
+            <Text layoutX="12.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição:" />
+            <Text layoutX="12.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autor:" />
+            <Text layoutX="137.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Publicação:" />
+            <Label layoutX="28.0" layoutY="14.0" prefHeight="17.0" prefWidth="90.0" text="(id aqui)">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="161.0" layoutY="14.0" prefHeight="17.0" prefWidth="149.0" text="(nome aqui)" />
+            <Label layoutX="73.0" layoutY="46.0" prefHeight="46.0" prefWidth="335.0" text="(descrição aqui)" />
+            <Label layoutX="48.0" layoutY="103.0" prefHeight="17.0" prefWidth="79.0" text="(autor aqui)" />
+            <Label layoutX="196.0" layoutY="103.0" prefHeight="17.0" prefWidth="71.0" text="(Publicação)" />
+            <Text layoutX="274.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edição:" />
+            <Text layoutX="16.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editora:" />
+            <Label layoutX="311.0" layoutY="103.0" prefHeight="17.0" prefWidth="52.0" text="(edição)" />
+            <Label layoutX="62.0" layoutY="131.0" text="(Editora aqui)" />
+            <Text layoutX="149.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Em Circulação:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Label layoutX="231.0" layoutY="131.0" text="(resposta)">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Text layoutX="13.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emprestado:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Text layoutX="155.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservado:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Label layoutX="83.0" layoutY="165.0" text="(Resposta)">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="218.0" layoutY="165.0" text="(Resposta)">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
