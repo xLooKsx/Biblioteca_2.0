@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="512.0" prefWidth="852.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="512.0" prefWidth="852.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.pessoal.biblioteca.view.PainelBaseController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -28,11 +28,12 @@
       </MenuBar>
    </top>
    <left>
-      <GridPane prefHeight="354.0" prefWidth="163.0" style="-fx-border-color: #000; -fx-grid-lines-visible: true;">
+      <GridPane prefHeight="354.0" prefWidth="163.0" style="-fx-border-color: #7b91ad; -fx-background-color: #7b91ad; -fx-grid-lines-visible: true;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -41,53 +42,61 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastro de Usuario">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastro de Usuario" GridPane.rowIndex="1">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
                <GridPane.margin>
                   <Insets left="12.0" />
                </GridPane.margin></Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastro de Livro" GridPane.rowIndex="1">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastro de Livro" GridPane.rowIndex="2">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
                <GridPane.margin>
                   <Insets left="12.0" />
                </GridPane.margin></Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Acervo" GridPane.rowIndex="2">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Acervo" GridPane.rowIndex="3">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
                <GridPane.margin>
                   <Insets left="12.0" />
                </GridPane.margin></Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Emprestimo" GridPane.rowIndex="3">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Emprestimo" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="12.0" />
                </GridPane.margin>
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font></Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Devolução" GridPane.rowIndex="4">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Devolução" GridPane.rowIndex="5">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
                <GridPane.margin>
                   <Insets left="12.0" />
                </GridPane.margin></Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reserva" textAlignment="CENTER" GridPane.rowIndex="5">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reserva" textAlignment="CENTER" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets left="12.0" />
                </GridPane.margin>
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font></Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Buscar">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="12.0" />
+               </GridPane.margin>
+            </Text>
          </children>
       </GridPane>
    </left>
    <bottom>
-      <HBox alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="564.0" style="-fx-background-color: #364e6d;" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_RIGHT" prefHeight="22.0" prefWidth="564.0" style="-fx-background-color: #7b91ad;" BorderPane.alignment="CENTER">
          <children>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: right;" text="Copyright © 2017 Lucas Silva Oliveira - Todos os direitos reservados" />
          </children>
@@ -102,19 +111,22 @@
                </image>
             </ImageView>
             <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bem Vindo," />
-            <Label layoutX="75.0" layoutY="14.0" text="(nome usuario)" />
+            <Label fx:id="lblNomeUsuario" layoutX="75.0" layoutY="14.0" text="(nome usuario)" />
             <VBox layoutX="11.0" layoutY="362.0" spacing="10.0">
                <children>
                   <Button layoutX="11.0" layoutY="362.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="164.0" text="Alterar Dados Pessoais" />
                   <Button layoutX="11.0" layoutY="394.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="164.0" text="Alterar Senha" />
-                  <Button layoutX="11.0" layoutY="426.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="164.0" text="Sair" />
+                  <Button layoutX="11.0" layoutY="426.0" mnemonicParsing="false" onAction="#handleSair" prefHeight="25.0" prefWidth="164.0" text="Sair" />
                </children>
             </VBox>
-            <Text layoutX="11.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade de material emprestado" wrappingWidth="127.876953125" />
-            <Label layoutX="75.0" layoutY="176.0" prefHeight="17.0" prefWidth="91.0" text="(qtd)" />
-            <Text layoutX="14.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Possui Material atrasado" wrappingWidth="88.263671875" />
-            <Label layoutX="61.0" layoutY="224.0" prefHeight="18.0" prefWidth="108.0" text="(resposta)" />
+            <Text layoutX="11.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade de material emprestado:" wrappingWidth="127.876953125" />
+            <Label fx:id="lblQtdMaterialEmprestado" layoutX="81.0" layoutY="176.0" prefHeight="17.0" prefWidth="82.0" text="(qtd)" />
+            <Text layoutX="14.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Possui Material atrasado:" wrappingWidth="88.263671875" />
+            <Label layoutX="66.0" layoutY="224.0" prefHeight="18.0" prefWidth="98.0" text="(resposta)" />
          </children>
       </Pane>
    </right>
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>
