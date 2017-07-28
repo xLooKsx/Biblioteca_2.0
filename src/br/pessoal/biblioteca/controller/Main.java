@@ -5,9 +5,13 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import br.pessoal.biblioteca.to.LivroTO;
 import br.pessoal.biblioteca.to.UsuarioTO;
 import br.pessoal.biblioteca.view.LoginController;
+import br.pessoal.biblioteca.view.PainelBaseController;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -20,6 +24,8 @@ public class Main extends Application {
 	private Stage primaryStage;
 	private UsuarioTO usuarioTO;
 	private BorderPane painelBase;
+	private ObservableList<LivroTO> livrosAtrasados = FXCollections.observableArrayList();
+	
 	Logger logger = Logger.getLogger(Main.class.getName());
 		
 	public Main() {		
@@ -46,6 +52,10 @@ public class Main extends Application {
 			Scene cena = new Scene(painelBase);
 			this.primaryStage.setScene(cena);
 			
+			PainelBaseController painelBaseController = loader.getController();
+			painelBaseController.setMain(this);
+			painelBaseController.mostrarDadosUsuario();
+			
 			this.primaryStage.show();
 		}catch (IOException e) {
 			logger.log(Level.SEVERE, "Erro ao mostrar o painel base ", e);
@@ -58,8 +68,7 @@ public class Main extends Application {
 			loader.setLocation(Main.class.getResource("/br/pessoal/biblioteca/view/BoasVindas.fxml"));
 			AnchorPane boasVindas = (AnchorPane) loader.load();
 			
-			painelBase.setCenter(boasVindas);
-						
+			painelBase.setCenter(boasVindas);						
 		}catch (IOException e) {
 			 logger.log(Level.SEVERE, "Erro ao apresentar as boas vindas ", e);
 		}
@@ -96,5 +105,9 @@ public class Main extends Application {
 
 	public Stage getPrimaryStage() {
 		return primaryStage;
-	}	
+	}
+
+	public ObservableList<LivroTO> getLivrosAtrasados() {
+		return livrosAtrasados;
+	}		
 }
