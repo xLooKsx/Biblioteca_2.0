@@ -40,7 +40,8 @@ public class LoginController {
 			this.usuarioTO = this.loginDAO.buscarUsuario(Integer.parseInt(txtUsuario.getText()));
 			if (this.usuarioTO != null) {
 				main.setUsuarioTO(this.usuarioTO);
-				this.lblMensagemErro.setText("Login foi um sucesso");
+				main.mostraPainelBase();
+				main.apresentarBoasVindas();
 			}else {
 				this.lblMensagemErro.setText("Usuario Invalido");
 			}

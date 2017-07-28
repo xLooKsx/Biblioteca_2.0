@@ -1,6 +1,7 @@
 package br.pessoal.biblioteca.controller;
 
 
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,12 +12,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
 	private Stage primaryStage;
 	private UsuarioTO usuarioTO;
+	private BorderPane painelBase;
 	Logger logger = Logger.getLogger(Main.class.getName());
 		
 	public Main() {		
@@ -32,7 +35,37 @@ public class Main extends Application {
 		mostrarJanelaLogin();
 	}
 
-	private void mostrarJanelaLogin() {
+	public void mostraPainelBase() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("/br/pessoal/biblioteca/view/PainelBase.fxml"));
+			this.painelBase = (BorderPane) loader.load();
+			
+			this.primaryStage.setTitle("Biblioteca");
+			
+			Scene cena = new Scene(painelBase);
+			this.primaryStage.setScene(cena);
+			
+			this.primaryStage.show();
+		}catch (IOException e) {
+			logger.log(Level.SEVERE, "Erro ao mostrar o painel base ", e);
+		}
+	}
+	
+	public void apresentarBoasVindas() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("/br/pessoal/biblioteca/view/BoasVindas.fxml"));
+			AnchorPane boasVindas = (AnchorPane) loader.load();
+			
+			painelBase.setCenter(boasVindas);
+						
+		}catch (IOException e) {
+			 logger.log(Level.SEVERE, "Erro ao apresentar as boas vindas ", e);
+		}
+	}
+	
+	public void mostrarJanelaLogin() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("/br/pessoal/biblioteca/view/Login.fxml"));			
@@ -45,7 +78,7 @@ public class Main extends Application {
 			loginController.setMain(this);
 			
 			this.primaryStage.show();
-		}catch (Exception e) {
+		}catch (IOException e) {
 			logger.log(Level.SEVERE, "Erro ao carregar a janela de Login:", e);
 		}
 	}
