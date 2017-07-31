@@ -48,7 +48,114 @@ public class LivroTO {
 		this.publicacao = new SimpleObjectProperty<LocalDate>(publicacao);
 	}
 	
+	public int getIdLivro() {
+		return idLivro.get();
+	}
+	public void setIdLivro(int idLivro) {
+		this.idLivro.set(idLivro);
+	}
+	public IntegerProperty idLivroProperty() {
+		return this.idLivro;
+	}
+		
+	public int getEdicao() {
+		return edicao.get();
+	}
+	public void setEdicao(int edicao) {
+		this.edicao.set(edicao);
+	}
+	public IntegerProperty edicaoProperty() {
+		return this.edicao;
+	}
 	
+	public String getNomeLivro() {
+		return nomeLivro.get();
+	}
+	public void setNomeLivro(String nomeLivro) {
+		this.nomeLivro.set(nomeLivro);
+	}
+	public StringProperty nomeLivroProperty() {
+		return this.nomeLivro;
+	}
+	
+	public String getDescricao() {
+		return descricao.get();
+	}
+	public void setDescricao(String descricao) {
+		this.descricao.set(descricao);
+	}
+	public StringProperty descricaoProperty() {
+		return this.descricao;
+	}
 
+	public String getAutor() {
+		return autor.get();
+	}
+	public void setAutor(String autor) {
+		this.autor.set(autor);
+	}
+	public StringProperty autorProperty() {
+		return this.autor;
+	}
+	
+	public String getEditora() {
+		return editora.get();
+	}
+	public void setEditora(String editora) {
+		this.editora.set(editora);
+	}
+	public StringProperty editoraProperty() {
+		return this.editora;
+	}
+	
+	public String getTipo() {
+		return tipo.get();
+	}
+	public void setTipo(String tipo) {
+		this.tipo.set(tipo);
+	}
+	public StringProperty tipoProperty() {
+		return this.tipo;
+	}
+	
+	public boolean getCircular() {
+		return circular.get();
+	}
+	public void setCircular(boolean circular) {
+		this.circular.set(circular);
+	}
+	public BooleanProperty circularProperty() {
+		return this.circular;
+	}
+	
+	public boolean getEmprestado() {
+		return emprestado.get();
+	}
+	public void setEmprestado(boolean emprestado) {
+		this.emprestado.set(emprestado);
+	}
+	public BooleanProperty emprestadoProperty() {
+		return this.emprestado;
+	}
+	
+	public boolean getReservado() {
+		return reservado.get();
+	}
+	public void setReservado(boolean reservado) {
+		this.reservado.set(reservado);
+	}
+	public BooleanProperty reservadoProperty() {
+		return this.reservado;
+	}
+	
+	public LocalDate getPublicacao() {
+		return publicacao.get();
+	}
+	public void setPublicacao(LocalDate publicacao) {
+		this.publicacao.set(publicacao);
+	}
+	public ObjectProperty<LocalDate> publicacaoProperty(){
+		return this.publicacao;
+	}
 	
 }

@@ -9,6 +9,7 @@ import br.pessoal.biblioteca.to.LivroTO;
 import br.pessoal.biblioteca.to.UsuarioTO;
 import br.pessoal.biblioteca.view.LoginController;
 import br.pessoal.biblioteca.view.PainelBaseController;
+import br.pessoal.biblioteca.view.RecuperacaoSenhaController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -80,6 +82,8 @@ public class Main extends Application {
 			loader.setLocation(Main.class.getResource("/br/pessoal/biblioteca/view/Login.fxml"));			
 			AnchorPane login = (AnchorPane) loader.load();
 			
+			this.primaryStage.setTitle("Login");
+			
 			Scene cena = new Scene(login);
 			this.primaryStage.setScene(cena);
 			
@@ -92,6 +96,31 @@ public class Main extends Application {
 		}
 	}
 
+	public void mostraJanelaRecuperacaoSenha() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("/br/pessoal/biblioteca/view/RecuperacaoSenha.fxml"));
+			AnchorPane recuperarSenha = (AnchorPane) loader.load();
+			
+			//Criação da Janela dialogo
+			Stage janelaDialogo = new Stage();
+			janelaDialogo.setTitle("Recuperação de Senha");
+			janelaDialogo.getIcons().add(new Image("file:imagem/Bookmark.png"));
+			janelaDialogo.initModality(Modality.WINDOW_MODAL);
+			janelaDialogo.initOwner(this.primaryStage);
+			
+			Scene cena = new Scene(recuperarSenha);
+			janelaDialogo.setScene(cena);
+			
+			RecuperacaoSenhaController recuperacaoSenhaController = loader.getController();
+			recuperacaoSenhaController.setJanelaDialogo(janelaDialogo);
+			
+			janelaDialogo.showAndWait();
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
