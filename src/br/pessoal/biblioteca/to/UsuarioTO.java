@@ -2,8 +2,10 @@ package br.pessoal.biblioteca.to;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.LongProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -18,8 +20,9 @@ public class UsuarioTO {
 	private StringProperty email;
 	private StringProperty tipoUsuario;
 	
-	private IntegerProperty matricula;
-	private IntegerProperty telefone;
+	private LongProperty telefone;
+	
+	private IntegerProperty matricula;	
 	private IntegerProperty qtdLivro;
 	private IntegerProperty qtdRevista;
 	
@@ -31,7 +34,7 @@ public class UsuarioTO {
 	}
 
 	public UsuarioTO(int matricula, String senha, String nome, String ultimoNome, String logradouro, String tipoLogradouro, String complLogradouro,
-					String email, String tipoUsuario, int telefone, int qtdLivro, int qtdRevista, boolean contaAtiva, boolean bibliotecario) {
+					String email, String tipoUsuario, long telefone, int qtdLivro, int qtdRevista, boolean contaAtiva, boolean bibliotecario) {
 		
 		this.matricula = new SimpleIntegerProperty(matricula);
 		this.senha = new SimpleStringProperty(senha);
@@ -42,7 +45,7 @@ public class UsuarioTO {
 		this.complLogradouro = new SimpleStringProperty(complLogradouro);
 		this.email = new SimpleStringProperty(email);
 		this.tipoUsuario = new SimpleStringProperty(tipoUsuario);
-		this.telefone = new SimpleIntegerProperty(telefone);
+		this.telefone = new SimpleLongProperty(telefone);
 		this.qtdLivro = new SimpleIntegerProperty(qtdLivro);
 		this.qtdRevista = new SimpleIntegerProperty(qtdRevista);
 		this.contaAtiva = new SimpleBooleanProperty(contaAtiva);
@@ -179,13 +182,13 @@ public class UsuarioTO {
 	 * Telefone
 	 * @return
 	 */
-	public int getTelefone() {
+	public long getTelefone() {
 		return telefone.get();
 	}
-	public void setTelefone(int telefone) {
+	public void setTelefone(long telefone) {
 		this.telefone.set(telefone);
 	}
-	public IntegerProperty telefoneProperty() {
+	public LongProperty telefoneProperty() {
 		return this.telefone;
 	}
 	

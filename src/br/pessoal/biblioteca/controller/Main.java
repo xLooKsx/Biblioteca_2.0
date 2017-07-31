@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 
 import br.pessoal.biblioteca.to.LivroTO;
 import br.pessoal.biblioteca.to.UsuarioTO;
+import br.pessoal.biblioteca.view.AlterarSenhaController;
 import br.pessoal.biblioteca.view.LoginController;
 import br.pessoal.biblioteca.view.PainelBaseController;
 import br.pessoal.biblioteca.view.RecuperacaoSenhaController;
@@ -64,15 +65,15 @@ public class Main extends Application {
 		}
 	}
 	
-	public void apresentarBoasVindas() {
+	public void mostrarJanelaBusca() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("/br/pessoal/biblioteca/view/BoasVindas.fxml"));
+			loader.setLocation(Main.class.getResource("/br/pessoal/biblioteca/view/Busca.fxml"));
 			AnchorPane boasVindas = (AnchorPane) loader.load();
 			
 			painelBase.setCenter(boasVindas);						
 		}catch (IOException e) {
-			 logger.log(Level.SEVERE, "Erro ao apresentar as boas vindas ", e);
+			 logger.log(Level.SEVERE, "Erro ao apresentar a busca ", e);
 		}
 	}
 	
@@ -117,7 +118,22 @@ public class Main extends Application {
 			
 			janelaDialogo.showAndWait();
 		}catch (Exception e) {
-			// TODO: handle exception
+			logger.log(Level.SEVERE, "Erro ao mostrar janela de recuperação de Senha ", e);
+		}
+	}
+	
+	public void mostraJanelaAlteracaoSenha() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("/br/pessoal/biblioteca/view/AlterarSenha.fxml"));
+			AnchorPane alterarSenha = (AnchorPane) loader.load();
+			
+			AlterarSenhaController alterarSenhaController = loader.getController();
+			alterarSenhaController.setMain(this);
+			
+			painelBase.setCenter(alterarSenha);
+		}catch (Exception e) {
+			logger.log(Level.SEVERE, "Não foi possivel carrecar a janela de alterar Senha ", e);
 		}
 	}
 	

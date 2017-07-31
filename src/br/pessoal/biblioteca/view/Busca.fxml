@@ -11,10 +11,10 @@
       <Text layoutX="38.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buscar por titulo:" />
       <TextField layoutX="134.0" layoutY="40.0" prefHeight="25.0" prefWidth="273.0" />
       <Button defaultButton="true" layoutX="414.0" layoutY="40.0" mnemonicParsing="false" text="Buscar" />
-      <TableView layoutX="38.0" layoutY="104.0" prefHeight="84.0" prefWidth="427.0">
+      <TableView layoutX="10.0" layoutY="104.0" prefHeight="84.0" prefWidth="481.0">
         <columns>
-          <TableColumn prefWidth="139.0" text="Id" />
-            <TableColumn prefWidth="287.0" text="Nome" />
+          <TableColumn editable="false" prefWidth="132.0" resizable="false" sortType="DESCENDING" text="Id" />
+            <TableColumn editable="false" prefWidth="348.0" resizable="false" sortType="DESCENDING" text="Nome" />
         </columns>
       </TableView>
       <Pane layoutX="38.0" layoutY="199.0" prefHeight="195.0" prefWidth="427.0">

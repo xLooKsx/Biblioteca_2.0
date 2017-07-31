@@ -33,9 +33,7 @@ public class EmprestimoDAO {
 			logger.log(Level.INFO, stm.toString());
 			
 			while (rs.next()) {
-				/**
-				 * Chamar o metodo listarLivrosAtrasados em LivroDAO 
-				 */				
+				new LivroDAO().listarLivrosAtrasados(rs.getInt(1), main);				
 			}
 		}catch (SQLException e) {
 			logger.log(Level.SEVERE, "Erro ao procurar emprestimos atrasados ", e);

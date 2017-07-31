@@ -112,17 +112,18 @@
             </ImageView>
             <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bem Vindo," />
             <Label fx:id="lblNomeUsuario" layoutX="75.0" layoutY="14.0" text="(nome usuario)" />
-            <VBox layoutX="11.0" layoutY="362.0" spacing="10.0">
+            <VBox layoutX="11.0" layoutY="321.0" spacing="10.0">
                <children>
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="164.0" text="Meus Emprestimos" />
                   <Button layoutX="11.0" layoutY="362.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="164.0" text="Alterar Dados Pessoais" />
-                  <Button layoutX="11.0" layoutY="394.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="164.0" text="Alterar Senha" />
+                  <Button layoutX="11.0" layoutY="394.0" mnemonicParsing="false" onAction="#handleAlterarSenha" prefHeight="25.0" prefWidth="164.0" text="Alterar Senha" />
                   <Button layoutX="11.0" layoutY="426.0" mnemonicParsing="false" onAction="#handleSair" prefHeight="25.0" prefWidth="164.0" text="Sair" />
                </children>
             </VBox>
             <Text layoutX="11.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade de material emprestado:" wrappingWidth="127.876953125" />
             <Label fx:id="lblQtdMaterialEmprestado" layoutX="81.0" layoutY="176.0" prefHeight="17.0" prefWidth="82.0" text="(qtd)" />
             <Text layoutX="14.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Possui Material atrasado:" wrappingWidth="88.263671875" />
-            <Label layoutX="66.0" layoutY="224.0" prefHeight="18.0" prefWidth="98.0" text="(resposta)" />
+            <Label fx:id="lblPossuiMaterialAtrasado" layoutX="66.0" layoutY="224.0" prefHeight="13.0" prefWidth="98.0" text="(resposta)" />
          </children>
       </Pane>
    </right>
