@@ -22,9 +22,7 @@ public class LoginController {
 	private Label lblMensagemErro;
 
 	private Main main;
-	private UsuarioTO usuarioTO;
-	
-	LoginDAO loginDAO = new LoginDAO();
+	private UsuarioTO usuarioTO;	
 	
 	public LoginController() {	
 	}
@@ -37,8 +35,8 @@ public class LoginController {
 	@FXML
 	private void handleEntrar() {
 		if (camposValidos()) {
-			this.usuarioTO = this.loginDAO.buscarUsuario(Integer.parseInt(txtUsuario.getText()));
-			if (this.usuarioTO != null) {
+			this.usuarioTO = new LoginDAO().buscarUsuario(Integer.parseInt(this.txtUsuario.getText()), this.pwSenha.getText());
+			if (this.usuarioTO.getContaAtiva()) {
 				main.setUsuarioTO(this.usuarioTO);
 				main.mostraPainelBase();
 				main.apresentarBoasVindas();
@@ -47,6 +45,13 @@ public class LoginController {
 			}
 		}
 		
+	}
+	
+	@FXML
+	private void handleRecuperarSenha() {
+		this.txtUsuario.setText("");
+		this.pwSenha.setText("");
+		main.mostraJanelaRecuperacaoSenha();
 	}
 	
 	private boolean camposValidos() {
