@@ -8,8 +8,6 @@ import javafx.scene.text.Text;
 public class PainelBaseController {
 
 	@FXML
-	private Label lblNomeUsuario;
-	@FXML
 	private Label lblQtdMaterialEmprestado;
 	@FXML
 	private Label lblPossuiMaterialAtrasado;
@@ -33,18 +31,22 @@ public class PainelBaseController {
 		this.main.mostraJanelaAlteracaoSenha();
 	}
 	
-	public void mostrarDadosUsuario() {
-		int QtdMaterialAtrasado = main.getUsuarioTO().getQtdLivro() + main.getUsuarioTO().getQtdRevista();		
-		
-		lblNomeUsuario.setText(main.getUsuarioTO().getNome());
-		lblQtdMaterialEmprestado.setText(Integer.toString(QtdMaterialAtrasado));
-		lblPossuiMaterialAtrasado.setText(this.main.getLivrosAtrasados().size()==0?"Não":"Sim");
-	}	
-	
 	@FXML
 	private void handleSair() {
 		main.mostrarJanelaLogin();
 	}
+	
+	@FXML
+	private void handleAlterarDados() {
+		main.mostraJanelaAlterarDados();
+	}
+	
+	public void mostrarDadosUsuario() {
+		int QtdMaterialAtrasado = main.getUsuarioTO().getQtdLivro() + main.getUsuarioTO().getQtdRevista();		
+				
+		lblQtdMaterialEmprestado.setText(Integer.toString(QtdMaterialAtrasado));
+		lblPossuiMaterialAtrasado.setText(this.main.getLivrosAtrasados().size()==0?"Não":"Sim");
+	}		
 
 	public void setMain(Main main) {
 		this.main = main;

@@ -247,5 +247,15 @@ public class UsuarioTO {
 	public BooleanProperty bibliotecarioProperty() {
 		return this.bibliotecario;
 	}
+
+	@Override
+	public String toString() {
+		return "UsuarioTO [senha=" + senha + ", nome=" + nome + ", ultimoNome=" + ultimoNome + ", logradouro="
+				+ logradouro + ", tipoLogradouro=" + tipoLogradouro + ", complLogradouro=" + complLogradouro
+				+ ", email=" + email + ", tipoUsuario=" + tipoUsuario + ", telefone=" + telefone + ", matricula="
+				+ matricula + ", qtdLivro=" + qtdLivro + ", qtdRevista=" + qtdRevista + ", contaAtiva=" + contaAtiva
+				+ ", bibliotecario=" + bibliotecario + "]";
+	}	
+	
 	
 }
