@@ -1,10 +1,5 @@
 package br.pessoal.biblioteca.view;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.mysql.jdbc.Field;
-
 import br.pessoal.biblioteca.controller.Main;
 import br.pessoal.biblioteca.dao.UsuarioDAO;
 import br.pessoal.biblioteca.to.UsuarioTO;
@@ -60,27 +55,34 @@ public class AlterarDadosController {
 		if (camposValidos()) {			
 			this.usuarioTemp.setNome(this.txtNome.getText().trim().toUpperCase());
 			this.usuarioTemp.setUltimoNome(this.txtSobrenome.getText().trim().toUpperCase());
-			this.usuarioTemp.setTipoLogradouro(BibliotecaUtils.getTipoEndereco(this.comboBoxTipoEndereco.getValue()));
+			this.usuarioTemp.setTipoLogradouro(BibliotecaUtils.getTipoEndereco(this.comboBoxTipoEndereco.getValue().trim()));
 			this.usuarioTemp.setLogradouro(this.txtEndereco.getText().trim().toUpperCase());
 			this.usuarioTemp.setComplLogradouro(this.txtComplemento.getText().trim().toUpperCase());
 			this.usuarioTemp.setTelefone(BibliotecaUtils.removeMascaraTelefoneCelular(this.txtTelefone.getText().trim()));
 			this.usuarioTemp.setEmail(this.txtEmail.getText().trim().toUpperCase());
 			
-			if (BibliotecaUtils.compararUsuarios(this.usuarioTO, this.usuarioTemp) != 0) {
-				new UsuarioDAO().alteracaoDadosPessoais(this.usuarioTO);
-				
-				this.main.setUsuarioTO(this.usuarioTO);
-				
-				Alert alerta = new Alert(AlertType.INFORMATION);
-				alerta.setTitle("Alteração de dados pessoais");
-				alerta.setHeaderText("Dados pessoais alterados com sucesso");
-				alerta.showAndWait();
-			}else {
+			if (BibliotecaUtils.compararUsuarios(this.usuarioTO, this.usuarioTemp).length() == 0) {
 				Alert alerta = new Alert(AlertType.ERROR);
 				alerta.setTitle("Alteração de dados pessoais");
 				alerta.setHeaderText("Os dados não foram alterados");
 				alerta.setContentText("Altere pelo menos um campo para efetuar alguma alteração no cadastro");
 				alerta.showAndWait();
+			}else {
+				
+				this.usuarioTO.setNome(this.txtNome.getText().trim().toUpperCase());
+				this.usuarioTO.setUltimoNome(this.txtSobrenome.getText().trim().toUpperCase());
+				this.usuarioTO.setTipoLogradouro(BibliotecaUtils.getTipoEndereco(this.comboBoxTipoEndereco.getValue()));
+				this.usuarioTO.setLogradouro(this.txtEndereco.getText().trim().toUpperCase());
+				this.usuarioTO.setComplLogradouro(this.txtComplemento.getText().trim().toUpperCase());
+				this.usuarioTO.setTelefone(BibliotecaUtils.removeMascaraTelefoneCelular(this.txtTelefone.getText().trim()));
+				this.usuarioTO.setEmail(this.txtEmail.getText().trim().toUpperCase());
+				
+				new UsuarioDAO().alteracaoDadosPessoais(this.usuarioTO);
+				
+				Alert alerta = new Alert(AlertType.INFORMATION);
+				alerta.setTitle("Alteração de dados pessoais");
+				alerta.setHeaderText("Dados pessoais alterados com sucesso");
+				alerta.showAndWait();				
 			}
 		}
 	}
@@ -124,13 +126,16 @@ public class AlterarDadosController {
 
 	public void mostrarDadosUsuario() {
 		
-		this.txtNome.setText(this.usuarioTO.getNome());
-		this.txtSobrenome.setText(this.usuarioTO.getUltimoNome());
-		this.comboBoxTipoEndereco.setValue(BibliotecaUtils.setTipoEndereco(usuarioTO.getTipoLogradouro()));
-		this.txtEndereco.setText(this.usuarioTO.getLogradouro());
-		this.txtComplemento.setText(this.usuarioTO.getComplLogradouro());
-		this.txtTelefone.setText(BibliotecaUtils.adicionaMascaraTelefoneCelular(Long.toString(this.usuarioTO.getTelefone())));
-		this.txtEmail.setText(this.usuarioTO.getEmail());
+		this.txtNome.setText(this.main.getUsuarioTO().getNome());
+		this.txtSobrenome.setText(this.main.getUsuarioTO().getUltimoNome());
+		this.comboBoxTipoEndereco.setValue(BibliotecaUtils.setTipoEndereco(this.main.getUsuarioTO().getTipoLogradouro()));
+		this.txtEndereco.setText(this.main.getUsuarioTO().getLogradouro());
+		this.txtComplemento.setText(this.main.getUsuarioTO().getComplLogradouro());
+		this.txtTelefone.setText(BibliotecaUtils.adicionaMascaraTelefoneCelular(Long.toString(this.main.getUsuarioTO().getTelefone())));
+		this.txtEmail.setText(this.main.getUsuarioTO().getEmail());
+		
+		System.out.println("Casa: "+this.usuarioTO.toString());
+		System.out.println("Prin: "+this.main.getUsuarioTO().toString());
 	}
 
 	

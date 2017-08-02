@@ -43,7 +43,7 @@ public class LoginController {
 				main.mostraPainelBase();
 				main.mostrarJanelaBusca();
 			}else {
-				this.lblMensagemErro.setText("Usuario Invalido");
+				this.lblMensagemErro.setText("Usuario ou senha invalidos");
 			}
 		}
 		

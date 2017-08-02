@@ -35,10 +35,10 @@
                   <ComboBox fx:id="comboBoxTipoEndereco" layoutX="56.0" layoutY="57.0" prefHeight="25.0" prefWidth="112.0" />
                   <TextField fx:id="txtComplemento" layoutX="83.0" layoutY="99.0" prefHeight="25.0" prefWidth="229.0" />
                   <Text layoutX="5.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Complemento:" />
-                  <TextField fx:id="txtTelefone" layoutX="69.0" layoutY="137.0" prefHeight="25.0" prefWidth="131.0" />
-                  <Text layoutX="206.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" />
-                  <TextField fx:id="txtEmail" layoutX="238.0" layoutY="137.0" prefHeight="25.0" prefWidth="238.0" />
-                  <Text layoutX="18.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefone:" />
+                  <TextField fx:id="txtTelefone" layoutX="56.0" layoutY="137.0" prefHeight="25.0" prefWidth="123.0" />
+                  <Text layoutX="191.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" />
+                  <TextField fx:id="txtEmail" layoutX="223.0" layoutY="137.0" prefHeight="25.0" prefWidth="238.0" />
+                  <Text layoutX="5.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefone:" />
                   <Text layoutX="18.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informações de Contato">
                      <font>
                         <Font name="System Bold" size="13.0" />

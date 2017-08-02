@@ -147,7 +147,7 @@ public class Main extends Application {
 			
 			AlterarDadosController alterarDadosController = loader.getController();
 			alterarDadosController.setMain(this);
-			alterarDadosController.setUsuarioTO(usuarioTO);
+			alterarDadosController.setUsuarioTO(this.usuarioTO);
 			alterarDadosController.mostrarDadosUsuario();
 			
 			painelBase.setCenter(alterarDados);
@@ -174,4 +174,8 @@ public class Main extends Application {
 	public ObservableList<LivroTO> getLivrosAtrasados() {
 		return livrosAtrasados;
 	}		
+	
+	public String getToStringUsuario() {
+		return this.usuarioTO.toString();
+	}
 }

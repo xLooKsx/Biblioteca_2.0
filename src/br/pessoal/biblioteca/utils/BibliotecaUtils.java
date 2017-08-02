@@ -1,8 +1,5 @@
 package br.pessoal.biblioteca.utils;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.ResourceBundle;
 
 import br.pessoal.biblioteca.to.UsuarioTO;
@@ -82,12 +79,31 @@ public class BibliotecaUtils {
 		return ((numero.length() == 14 || numero.length() == 13) && numero.charAt(0)=='(' && numero.charAt(3)==')' && numero.charAt(8)=='-');
 	}
 	
-	public static int compararUsuarios(UsuarioTO usuarioPrincipal, UsuarioTO usuarioTemporario) {		
-		int cont = 0;
+	
+	public static String compararUsuarios(UsuarioTO usuarioPrincipal, UsuarioTO usuarioTemporario) {					
+		String camposModificados="";
 		
-		System.out.println(usuarioPrincipal.toString().contains(usuarioTemporario.toString()));
-		return 0;
-	}
-	
-	
+		if(!usuarioPrincipal.getNome().trim().equals(usuarioTemporario.getNome())) {
+			camposModificados += "#_Nome\n";
+		}
+		if (!usuarioPrincipal.getUltimoNome().trim().equals(usuarioTemporario.getUltimoNome())) {
+			camposModificados += "#_Sobrenome\n";
+		}
+		if (!usuarioPrincipal.getTipoLogradouro().trim().equals(usuarioTemporario.getTipoLogradouro())) {
+			camposModificados += "#_Tipo de endereço\n";
+		}
+		if (!usuarioPrincipal.getLogradouro().trim().equals(usuarioTemporario.getLogradouro())) {
+			camposModificados += "#_Endereço\n";
+		}
+		if (!usuarioPrincipal.getComplLogradouro().trim().equals(usuarioTemporario.getComplLogradouro())) {
+			camposModificados += "#_Complemento de Endereço\n";
+		}
+		if(!(usuarioPrincipal.getTelefone() == usuarioTemporario.getTelefone())) {
+			camposModificados += "#_Telefone\n";
+		}
+		if (!usuarioPrincipal.getEmail().trim().equals(usuarioTemporario.getEmail())) {
+			camposModificados += "#_Email\n";
+		}
+		return camposModificados;
+	}	
 }

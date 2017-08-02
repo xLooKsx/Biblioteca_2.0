@@ -40,6 +40,8 @@ public class AlterarSenhaController {
 				alerta.setTitle("Alteração de Senha");
 				alerta.setHeaderText("Senha alterada com sucesso");	
 				alerta.showAndWait();
+				
+				this.main.getUsuarioTO().setSenha(this.pwNovaSenha.getText());
 			}else {
 				Alert alerta = new Alert(AlertType.ERROR);
 				alerta.setTitle("Alteração de Senha");

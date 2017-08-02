@@ -60,7 +60,7 @@ public class UsuarioDAO {
 			this.stm.setString(7, usuarioTO.getEmail().toUpperCase());
 			this.stm.setInt(8, usuarioTO.getMatricula());
 			
-			stm.execute();
+			this.stm.execute();
 			logger.log(Level.INFO, stm.toString());
 		}catch (SQLException e) {
 				logger.log(Level.SEVERE, "Erro ao alterar dados pessoais do usuario ",e); 

@@ -52,10 +52,7 @@ public class UsuarioTO {
 		this.bibliotecario = new SimpleBooleanProperty(bibliotecario);
 	}
 
-	/**
-	 * Senha
-	 * @return
-	 */
+
 	public String getSenha() {
 		return senha.get();
 	}
@@ -66,10 +63,6 @@ public class UsuarioTO {
 		return this.senha;
 	}
 
-	/**
-	 * Nome
-	 * @return
-	 */
 	public String getNome() {
 		return nome.get();
 	}
@@ -80,10 +73,6 @@ public class UsuarioTO {
 		return this.nome;
 	}
 	
-	/**
-	 * Ultimo Nome
-	 * @return
-	 */
 	public String getUltimoNome() {
 		return ultimoNome.get();
 	}
@@ -94,10 +83,6 @@ public class UsuarioTO {
 		return this.ultimoNome;
 	}
 
-	/**
-	 * logradouro
-	 * @return
-	 */
 	public String getLogradouro() {
 		return logradouro.get();
 	}
@@ -108,10 +93,6 @@ public class UsuarioTO {
 		return this.logradouro;
 	}
 	
-	/**
-	 * Tipo de Logradouro
-	 * @return
-	 */
 	public String getTipoLogradouro() {
 		return tipoLogradouro.get();
 	}
@@ -122,10 +103,6 @@ public class UsuarioTO {
 		return this.tipoLogradouro;
 	}
 
-	/**
-	 * complemento de logradouro
-	 * @return
-	 */
 	public String getComplLogradouro() {
 		return complLogradouro.get();
 	}
@@ -136,10 +113,6 @@ public class UsuarioTO {
 		return this.complLogradouro;
 	}
 
-	/**
-	 * Email
-	 * @return
-	 */
 	public String getEmail() {
 		return email.get();
 	}
@@ -150,10 +123,6 @@ public class UsuarioTO {
 		return this.email;
 	}
 	
-	/**
-	 * tipo de usuario
-	 * @return
-	 */
 	public String getTipoUsuario() {
 		return tipoUsuario.get();
 	}
@@ -164,10 +133,6 @@ public class UsuarioTO {
 		return this.tipoUsuario;
 	}
 	
-	/**
-	 * Matricula
-	 * @return
-	 */
 	public int getMatricula() {
 		return matricula.get();
 	}
@@ -178,10 +143,6 @@ public class UsuarioTO {
 		return this.matricula;
 	}
 	
-	/**
-	 * Telefone
-	 * @return
-	 */
 	public long getTelefone() {
 		return telefone.get();
 	}
@@ -191,11 +152,7 @@ public class UsuarioTO {
 	public LongProperty telefoneProperty() {
 		return this.telefone;
 	}
-	
-	/**
-	 * Quantidade de Livros
-	 * @return
-	 */
+		
 	public int getQtdLivro() {
 		return qtdLivro.get();
 	}
@@ -205,11 +162,7 @@ public class UsuarioTO {
 	public IntegerProperty qtdLivroProperty() {
 		return this.qtdLivro;
 	}
-	
-	/**
-	 * Quantidade de Revistas
-	 * @return
-	 */
+		
 	public int getQtdRevista() {
 		return qtdRevista.get();
 	}
@@ -220,10 +173,6 @@ public class UsuarioTO {
 		return this.qtdRevista;
 	}
 
-	/**
-	 * Conta Ativa
-	 * @return
-	 */
 	public boolean getContaAtiva() {
 		return contaAtiva.get();
 	}
@@ -234,12 +183,9 @@ public class UsuarioTO {
 		return this.contaAtiva;
 	}
 	
-	/**
-	 * bibliotecario
-	 * @return
-	 */
 	public Boolean getBibliotecario() {
 		return bibliotecario.get();
+
 	}
 	public void setBibliotecario(Boolean bibliotecario) {
 		this.bibliotecario.set(bibliotecario);
