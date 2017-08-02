@@ -4,11 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import br.pessoal.biblioteca.controller.Main;
+import br.pessoal.biblioteca.to.EmprestimoTO;
 import br.pessoal.biblioteca.to.LivroTO;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class LivroDAO {
 
@@ -22,39 +26,41 @@ public class LivroDAO {
 		this.connection = new ConnectionFactory().getConnection();
 	}	
 	
-	public void listarLivrosAtrasados(int idLivro, Main main) {
-		StringBuilder sql = new StringBuilder();
-		sql.append("SELECT nome_do_livro, ")
-			.append("autor, ")
-			.append("publicacao, ")
-			.append("circ, ")
-			.append("edicao, ")
-			.append("editora, ")
-			.append("tipo ")
-			.append("FROM acervo ")
-			.append("WHERE id_acervo = ?");
+	public ObservableList<LivroTO> acervo(){		
 		try {
-			this.stm = connection.prepareStatement(sql.toString());
-			this.stm.setInt(1, idLivro);
-			this.stm.execute();
 			
-			this.rs = stm.executeQuery();
+			ObservableList<LivroTO> acervo = FXCollections.observableArrayList();
+			
+			StringBuilder sql = new StringBuilder();
+			sql.append("SELECT * ")
+				.append("FROM acervo");
+			
+			this.stm = this.connection.prepareStatement(sql.toString());
+			this.rs = this.stm.executeQuery();
+			
 			logger.log(Level.INFO, this.stm.toString());
 			
-			if (rs.next()) {
+			while (this.rs.next()) {
 				LivroTO livroTO = new LivroTO();
-				livroTO.setIdLivro(idLivro);
-				livroTO.setNomeLivro(this.rs.getString(1));
-				livroTO.setAutor(this.rs.getString(2));
-				livroTO.setPublicacao(this.rs.getDate(3).toLocalDate());
-				livroTO.setCircular(this.rs.getBoolean(4));
-				livroTO.setEdicao(this.rs.getInt(5));
-				livroTO.setEditora(this.rs.getString(6));
-				livroTO.setTipo(this.rs.getString(7));
-				main.getLivrosAtrasados().add(livroTO);
+				livroTO.setIdLivro(this.rs.getInt(1));
+				livroTO.setNomeLivro(this.rs.getString(2));
+				livroTO.setDescricao(this.rs.getString(3));
+				livroTO.setAutor(this.rs.getString(4));
+				livroTO.setPublicacao(this.rs.getDate(5).toLocalDate());
+				livroTO.setCircular(this.rs.getBoolean(6));
+				livroTO.setEdicao(this.rs.getInt(7));
+				livroTO.setEditora(this.rs.getString(8));
+				livroTO.setEmprestado(this.rs.getBoolean(9));
+				livroTO.setTipo(this.rs.getString(10));
+				livroTO.setReservado(this.rs.getBoolean(11));
+				acervo.add(livroTO);
 			}
-		}catch (SQLException e) {
-			 logger.log(Level.SEVERE, "Erro ao buscar acervo atrasado ",e);
+			
+			return acervo;
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
+		
+		return null;		
 	}
 }

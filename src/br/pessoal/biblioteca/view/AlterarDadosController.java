@@ -133,11 +133,7 @@ public class AlterarDadosController {
 		this.txtComplemento.setText(this.main.getUsuarioTO().getComplLogradouro());
 		this.txtTelefone.setText(BibliotecaUtils.adicionaMascaraTelefoneCelular(Long.toString(this.main.getUsuarioTO().getTelefone())));
 		this.txtEmail.setText(this.main.getUsuarioTO().getEmail());
-		
-		System.out.println("Casa: "+this.usuarioTO.toString());
-		System.out.println("Prin: "+this.main.getUsuarioTO().toString());
 	}
-
 	
 	public void setMain(Main main) {
 		this.main = main;

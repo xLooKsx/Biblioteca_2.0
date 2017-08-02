@@ -1,6 +1,7 @@
 package br.pessoal.biblioteca.view;
 
 import br.pessoal.biblioteca.controller.Main;
+import br.pessoal.biblioteca.utils.BibliotecaUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
@@ -45,7 +46,7 @@ public class PainelBaseController {
 		int QtdMaterialAtrasado = main.getUsuarioTO().getQtdLivro() + main.getUsuarioTO().getQtdRevista();		
 				
 		lblQtdMaterialEmprestado.setText(Integer.toString(QtdMaterialAtrasado));
-		lblPossuiMaterialAtrasado.setText(this.main.getLivrosAtrasados().size()==0?"Não":"Sim");
+		lblPossuiMaterialAtrasado.setText(BibliotecaUtils.checkarEmprestimos(this.main.getEmprestimos())==true?"Sim":"Não");
 	}		
 
 	public void setMain(Main main) {

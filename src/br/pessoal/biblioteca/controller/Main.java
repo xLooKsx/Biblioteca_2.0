@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import br.pessoal.biblioteca.dao.LivroDAO;
+import br.pessoal.biblioteca.to.EmprestimoTO;
 import br.pessoal.biblioteca.to.LivroTO;
 import br.pessoal.biblioteca.to.UsuarioTO;
 import br.pessoal.biblioteca.view.AlterarDadosController;
@@ -27,12 +29,15 @@ public class Main extends Application {
 
 	private Stage primaryStage;
 	private UsuarioTO usuarioTO;
-	private BorderPane painelBase;
-	private ObservableList<LivroTO> livrosAtrasados = FXCollections.observableArrayList();
+	private BorderPane painelBase;	
+	
+	private ObservableList<EmprestimoTO> emprestimos = FXCollections.observableArrayList();
+	private ObservableList<LivroTO> livros = FXCollections.observableArrayList();
 	
 	Logger logger = Logger.getLogger(Main.class.getName());
 		
 	public Main() {		
+		this.livros = new LivroDAO().acervo();
 	}
 
 	@Override
@@ -170,11 +175,15 @@ public class Main extends Application {
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
-
-	public ObservableList<LivroTO> getLivrosAtrasados() {
-		return livrosAtrasados;
-	}		
 	
+	public ObservableList<EmprestimoTO> getEmprestimos() {
+		return emprestimos;
+	}
+
+	public ObservableList<LivroTO> getLivros() {
+		return livros;
+	}
+
 	public String getToStringUsuario() {
 		return this.usuarioTO.toString();
 	}

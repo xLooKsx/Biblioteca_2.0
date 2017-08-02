@@ -1,8 +1,13 @@
 package br.pessoal.biblioteca.utils;
 
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import br.pessoal.biblioteca.controller.Main;
+import br.pessoal.biblioteca.to.EmprestimoTO;
+import br.pessoal.biblioteca.to.LivroTO;
 import br.pessoal.biblioteca.to.UsuarioTO;
+import javafx.collections.ObservableList;
 
 public class BibliotecaUtils {
 
@@ -79,7 +84,22 @@ public class BibliotecaUtils {
 		return ((numero.length() == 14 || numero.length() == 13) && numero.charAt(0)=='(' && numero.charAt(3)==')' && numero.charAt(8)=='-');
 	}
 	
+	public static boolean checkarEmprestimos(ObservableList<EmprestimoTO> emprestimos) {
+		for(EmprestimoTO emprestimoDaVez: emprestimos) {
+			if (emprestimoDaVez.getDataDevolução().isBefore(LocalDate.now())) {
+				return true;
+			}
+		}
+		return false;
+	}
 	
+	/**
+	 * Futuramente mostrar os campos que foram modificados
+	 * 
+	 * @param usuarioPrincipal
+	 * @param usuarioTemporario
+	 * @return
+	 */
 	public static String compararUsuarios(UsuarioTO usuarioPrincipal, UsuarioTO usuarioTemporario) {					
 		String camposModificados="";
 		
@@ -106,4 +126,14 @@ public class BibliotecaUtils {
 		}
 		return camposModificados;
 	}	
+	
+	public LivroTO livroEscolhido(int idLivro, Main main) {
+		ObservableList<LivroTO> acervo = main.getLivros();
+		for (LivroTO livroDaVez : acervo) {
+			if (idLivro == livroDaVez.getIdLivro()) {
+				return livroDaVez;
+			}
+		}
+		return null;
+	}
 }
