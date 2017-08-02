@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="459.0" prefWidth="503.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.pessoal.biblioteca.view.AlterarSenhaController">
+   <children>
+      <Pane layoutX="14.0" layoutY="14.0" prefHeight="343.0" prefWidth="396.0" style="-fx-border-color: #000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text layoutX="141.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ateração de Senha">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="111.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Digite a senha atual:" />
+            <Text layoutX="111.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Digite a nova senha:" />
+            <Text layoutX="111.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirme a nova senha:" />
+            <Button defaultButton="true" layoutX="407.0" layoutY="403.0" mnemonicParsing="false" onAction="#handleAlterarSenha" text="Salvar" />
+            <PasswordField fx:id="pwSenhaAtual" layoutX="144.0" layoutY="186.0" prefHeight="25.0" prefWidth="242.0" />
+            <PasswordField fx:id="pwNovaSenha" layoutX="144.0" layoutY="255.0" prefHeight="25.0" prefWidth="242.0" />
+            <PasswordField fx:id="pwConfirmaNovaSenha" layoutX="144.0" layoutY="315.0" prefHeight="25.0" prefWidth="242.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

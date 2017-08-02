@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,20 +23,20 @@ public class EmprestimoDAO {
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT acervo_idacervo ")
 			.append("FROM emprestimo ")
-			.append("WHERE usuarios_matricula = ? ")
-			.append("AND encerrado = false");
+			.append("WHERE  encerrado=false ")
+			.append("AND data_devolucao < ? ")
+			.append("AND usuarios_matricula=?");
 		try {		
 			PreparedStatement stm = connection.prepareStatement(sql.toString());
-			stm.setInt(1, main.getUsuarioTO().getMatricula());
+			stm.setDate(1, java.sql.Date.valueOf(LocalDate.now()));
+			stm.setInt(2, main.getUsuarioTO().getMatricula());
 			stm.execute();
 			
 			ResultSet rs = stm.executeQuery();
 			logger.log(Level.INFO, stm.toString());
 			
 			while (rs.next()) {
-				/**
-				 * Chamar o metodo listarLivrosAtrasados em LivroDAO 
-				 */				
+				new LivroDAO().listarLivrosAtrasados(rs.getInt(1), main);				
 			}
 		}catch (SQLException e) {
 			logger.log(Level.SEVERE, "Erro ao procurar emprestimos atrasados ", e);

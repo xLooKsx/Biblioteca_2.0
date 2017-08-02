@@ -3,15 +3,18 @@ package br.pessoal.biblioteca.view;
 import br.pessoal.biblioteca.controller.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 
 public class PainelBaseController {
 
 	@FXML
-	private Label lblNomeUsuario;
-	@FXML
 	private Label lblQtdMaterialEmprestado;
 	@FXML
 	private Label lblPossuiMaterialAtrasado;
+	
+	@FXML
+	private Text txtBuscar;
+	
 	
 	private Main main;
 	
@@ -20,20 +23,30 @@ public class PainelBaseController {
 
 	@FXML
 	private void initialize() {		
+		
 	}
 
-	public void mostrarDadosUsuario() {
-		int QtdMaterialAtrasado = main.getUsuarioTO().getQtdLivro() + main.getUsuarioTO().getQtdRevista();
-		
-		lblNomeUsuario.setText(main.getUsuarioTO().getNome());
-		lblQtdMaterialEmprestado.setText(Integer.toString(QtdMaterialAtrasado));
-		//Fazer a logica para mostrar se tem ou não material atrasado
+	@FXML
+	private void handleAlterarSenha() {
+		this.main.mostraJanelaAlteracaoSenha();
 	}
 	
 	@FXML
 	private void handleSair() {
 		main.mostrarJanelaLogin();
 	}
+	
+	@FXML
+	private void handleAlterarDados() {
+		main.mostraJanelaAlterarDados();
+	}
+	
+	public void mostrarDadosUsuario() {
+		int QtdMaterialAtrasado = main.getUsuarioTO().getQtdLivro() + main.getUsuarioTO().getQtdRevista();		
+				
+		lblQtdMaterialEmprestado.setText(Integer.toString(QtdMaterialAtrasado));
+		lblPossuiMaterialAtrasado.setText(this.main.getLivrosAtrasados().size()==0?"Não":"Sim");
+	}		
 
 	public void setMain(Main main) {
 		this.main = main;

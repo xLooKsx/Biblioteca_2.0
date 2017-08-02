@@ -13,6 +13,9 @@ import br.pessoal.biblioteca.to.LivroTO;
 public class LivroDAO {
 
 	private Connection connection;
+	private PreparedStatement stm;
+	private ResultSet rs;
+	
 	Logger logger = Logger.getLogger(LivroDAO.class.getName());
 	
 	public LivroDAO() {	
@@ -22,7 +25,6 @@ public class LivroDAO {
 	public void listarLivrosAtrasados(int idLivro, Main main) {
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT nome_do_livro, ")
-			.append("nome_do_livro, ")
 			.append("autor, ")
 			.append("publicacao, ")
 			.append("circ, ")
@@ -32,19 +34,24 @@ public class LivroDAO {
 			.append("FROM acervo ")
 			.append("WHERE id_acervo = ?");
 		try {
-			PreparedStatement stm = connection.prepareStatement(sql.toString());
-			stm.setInt(1, idLivro);
-			stm.execute();
+			this.stm = connection.prepareStatement(sql.toString());
+			this.stm.setInt(1, idLivro);
+			this.stm.execute();
 			
-			ResultSet rs = stm.executeQuery();
-			logger.log(Level.INFO, stm.toString());
+			this.rs = stm.executeQuery();
+			logger.log(Level.INFO, this.stm.toString());
 			
-			while (rs.next()) {
-				LivroTO livro = new LivroTO();
-				/**
-				 * Colocar os atributos do livro para ser preenchido
-				 * e adicionar a lista de livros atrasados que esta no Main
-				 */
+			if (rs.next()) {
+				LivroTO livroTO = new LivroTO();
+				livroTO.setIdLivro(idLivro);
+				livroTO.setNomeLivro(this.rs.getString(1));
+				livroTO.setAutor(this.rs.getString(2));
+				livroTO.setPublicacao(this.rs.getDate(3).toLocalDate());
+				livroTO.setCircular(this.rs.getBoolean(4));
+				livroTO.setEdicao(this.rs.getInt(5));
+				livroTO.setEditora(this.rs.getString(6));
+				livroTO.setTipo(this.rs.getString(7));
+				main.getLivrosAtrasados().add(livroTO);
 			}
 		}catch (SQLException e) {
 			 logger.log(Level.SEVERE, "Erro ao buscar acervo atrasado ",e);

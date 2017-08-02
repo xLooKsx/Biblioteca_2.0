@@ -1,6 +1,7 @@
 package br.pessoal.biblioteca.view;
 
 import br.pessoal.biblioteca.controller.Main;
+import br.pessoal.biblioteca.dao.EmprestimoDAO;
 import br.pessoal.biblioteca.dao.LoginDAO;
 import br.pessoal.biblioteca.to.UsuarioTO;
 import javafx.fxml.FXML;
@@ -38,10 +39,11 @@ public class LoginController {
 			this.usuarioTO = new LoginDAO().buscarUsuario(Integer.parseInt(this.txtUsuario.getText()), this.pwSenha.getText());
 			if (this.usuarioTO.getContaAtiva()) {
 				main.setUsuarioTO(this.usuarioTO);
+				new EmprestimoDAO().buscarEmprestimosAtrasados(this.main);
 				main.mostraPainelBase();
-				main.apresentarBoasVindas();
+				main.mostrarJanelaBusca();
 			}else {
-				this.lblMensagemErro.setText("Usuario Invalido");
+				this.lblMensagemErro.setText("Usuario ou senha invalidos");
 			}
 		}
 		

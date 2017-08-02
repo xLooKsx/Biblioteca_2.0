@@ -24,15 +24,8 @@ public class LoginDAO {
 	public UsuarioTO buscarUsuario(int usuario, String senha) {
 		try {
 			StringBuilder sql = new StringBuilder();
-			sql.append("SELECT matricula,")
-				.append(" senha,")
-				.append(" nome,")
-				.append(" is_ativa,")
-				.append(" is_biblioteca,")
-				.append(" tipo_usuario,")
-				.append(" qtd_livro,")
-				.append(" qtd_revista")
-				.append(" FROM usuarios WHERE matricula = ? and senha = ?");
+			sql.append("SELECT * ") 
+				.append("FROM usuarios WHERE matricula = ? and senha = ?");
 			
 			this.stm = this.connection.prepareStatement(sql.toString());
 			
@@ -48,11 +41,17 @@ public class LoginDAO {
 				usuarioTO.setMatricula(rs.getInt(1));
 				usuarioTO.setSenha(rs.getString(2));
 				usuarioTO.setNome(rs.getString(3));
-				usuarioTO.setContaAtiva(rs.getBoolean(4));
-				usuarioTO.setBibliotecario(rs.getBoolean(5));
-				usuarioTO.setTipoUsuario(rs.getString(6));
-				usuarioTO.setQtdLivro(rs.getInt(7));
-				usuarioTO.setQtdRevista(rs.getInt(8));
+				usuarioTO.setUltimoNome(rs.getString(4));
+				usuarioTO.setLogradouro(rs.getString(5));
+				usuarioTO.setTipoLogradouro(rs.getString(6));
+				usuarioTO.setComplLogradouro(rs.getString(7));
+				usuarioTO.setTelefone(rs.getLong(8));
+				usuarioTO.setEmail(rs.getString(9));
+				usuarioTO.setContaAtiva(rs.getBoolean(10));
+				usuarioTO.setBibliotecario(rs.getBoolean(11));
+				usuarioTO.setTipoUsuario(rs.getString(12));
+				usuarioTO.setQtdLivro(rs.getInt(13));
+				usuarioTO.setQtdRevista(rs.getInt(14));
 			}
 			this.rs.close();
 			this.stm.close();
@@ -72,9 +71,9 @@ public class LoginDAO {
 	public boolean validarUsuario(String nome, String sobrenome, int usuario) {
 		try {
 			StringBuilder sql = new StringBuilder();
-			sql.append("SELECT senha")
-				.append(" FROM usuarios")
-				.append(" WHERE matricula=? and is_ativa=true and nome=? and ultimo_nome=?");
+			sql.append("SELECT senha ")
+				.append("FROM usuarios ")
+				.append("WHERE matricula=? and is_ativa=true and nome=? and ultimo_nome=?");
 			
 			this.stm = this.connection.prepareStatement(sql.toString());
 			
@@ -105,9 +104,9 @@ public class LoginDAO {
 	public void alterarSenha(String nome, String sobrenome, String senha, int usuario) {
 		try {
 			StringBuilder sql = new StringBuilder();
-			sql.append("UPDATE usuarios")
-				.append(" SET senha = ?")
-				.append(" WHERE matricula=? and nome=? and ultimo_nome=?");
+			sql.append("UPDATE usuarios ")
+				.append("SET senha = ? ")
+				.append("WHERE matricula=? and nome=? and ultimo_nome=?");
 						
 			this.stm = this.connection.prepareStatement(sql.toString());
 			

@@ -1,7 +1,6 @@
 package br.pessoal.biblioteca.view;
 
 import br.pessoal.biblioteca.dao.LoginDAO;
-import br.pessoal.biblioteca.to.UsuarioTO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -29,8 +28,7 @@ public class RecuperacaoSenhaController {
 	@FXML
 	private PasswordField pwConfirmarSenha;	
 	
-	private Stage janelaDialogo;
-	private UsuarioTO usuarioTO;
+	private Stage janelaDialogo;	
 	
  	public RecuperacaoSenhaController() {		
 	}

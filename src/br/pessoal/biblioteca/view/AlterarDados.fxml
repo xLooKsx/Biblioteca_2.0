@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="459.0" prefWidth="503.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.pessoal.biblioteca.view.AlterarDadosController">
+   <children>
+      <Pane layoutX="132.0" layoutY="130.0" prefHeight="459.0" prefWidth="503.0" style="-fx-border-color: #000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text layoutX="171.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alterar Dados " wrappingWidth="163.453125">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+            </Text>
+            <Pane layoutX="12.0" layoutY="46.0" prefHeight="163.0" prefWidth="481.0" style="-fx-border-color: #000;">
+               <children>
+                  <Text layoutX="18.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" />
+                  <Text layoutX="18.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sobrenome:" />
+                  <TextField fx:id="txtNome" layoutX="25.0" layoutY="69.0" prefHeight="25.0" prefWidth="296.0" />
+                  <TextField fx:id="txtSobrenome" layoutX="25.0" layoutY="121.0" prefHeight="25.0" prefWidth="296.0" />
+                  <Text layoutX="25.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dados Pessoais">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane layoutX="11.0" layoutY="219.0" prefHeight="197.0" prefWidth="481.0" style="-fx-border-color: #000;">
+               <children>
+                  <Text layoutX="4.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Endereço:" />
+                  <TextField fx:id="txtEndereco" layoutX="179.0" layoutY="57.0" prefHeight="25.0" prefWidth="264.0" />
+                  <ComboBox fx:id="comboBoxTipoEndereco" layoutX="56.0" layoutY="57.0" prefHeight="25.0" prefWidth="112.0" />
+                  <TextField fx:id="txtComplemento" layoutX="83.0" layoutY="99.0" prefHeight="25.0" prefWidth="229.0" />
+                  <Text layoutX="5.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Complemento:" />
+                  <TextField fx:id="txtTelefone" layoutX="56.0" layoutY="137.0" prefHeight="25.0" prefWidth="123.0" />
+                  <Text layoutX="191.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" />
+                  <TextField fx:id="txtEmail" layoutX="223.0" layoutY="137.0" prefHeight="25.0" prefWidth="238.0" />
+                  <Text layoutX="5.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefone:" />
+                  <Text layoutX="18.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informações de Contato">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Button layoutX="441.0" layoutY="424.0" mnemonicParsing="false" onAction="#handleSalvar" text="Salvar" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

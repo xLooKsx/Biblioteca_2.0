@@ -7,6 +7,8 @@ import java.util.logging.Logger;
 
 import br.pessoal.biblioteca.to.LivroTO;
 import br.pessoal.biblioteca.to.UsuarioTO;
+import br.pessoal.biblioteca.view.AlterarDadosController;
+import br.pessoal.biblioteca.view.AlterarSenhaController;
 import br.pessoal.biblioteca.view.LoginController;
 import br.pessoal.biblioteca.view.PainelBaseController;
 import br.pessoal.biblioteca.view.RecuperacaoSenhaController;
@@ -50,10 +52,11 @@ public class Main extends Application {
 			this.painelBase = (BorderPane) loader.load();
 			
 			this.primaryStage.setTitle("Biblioteca");
+			this.primaryStage.centerOnScreen();
 			
 			Scene cena = new Scene(painelBase);
 			this.primaryStage.setScene(cena);
-			
+						
 			PainelBaseController painelBaseController = loader.getController();
 			painelBaseController.setMain(this);
 			painelBaseController.mostrarDadosUsuario();
@@ -64,15 +67,15 @@ public class Main extends Application {
 		}
 	}
 	
-	public void apresentarBoasVindas() {
+	public void mostrarJanelaBusca() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("/br/pessoal/biblioteca/view/BoasVindas.fxml"));
+			loader.setLocation(Main.class.getResource("/br/pessoal/biblioteca/view/Busca.fxml"));
 			AnchorPane boasVindas = (AnchorPane) loader.load();
 			
 			painelBase.setCenter(boasVindas);						
 		}catch (IOException e) {
-			 logger.log(Level.SEVERE, "Erro ao apresentar as boas vindas ", e);
+			 logger.log(Level.SEVERE, "Erro ao apresentar a busca ", e);
 		}
 	}
 	
@@ -116,8 +119,40 @@ public class Main extends Application {
 			recuperacaoSenhaController.setJanelaDialogo(janelaDialogo);
 			
 			janelaDialogo.showAndWait();
+		}catch (IOException e) {
+			logger.log(Level.SEVERE, "Erro ao mostrar janela de recuperação de Senha ", e);
+		}
+	}
+	
+	public void mostraJanelaAlteracaoSenha() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("/br/pessoal/biblioteca/view/AlterarSenha.fxml"));
+			AnchorPane alterarSenha = (AnchorPane) loader.load();
+			
+			AlterarSenhaController alterarSenhaController = loader.getController();
+			alterarSenhaController.setMain(this);
+			
+			painelBase.setCenter(alterarSenha);
 		}catch (Exception e) {
-			// TODO: handle exception
+			logger.log(Level.SEVERE, "Não foi possivel carrecar a janela de alterar Senha ", e);
+		}
+	}
+	
+	public void mostraJanelaAlterarDados() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("/br/pessoal/biblioteca/view/AlterarDados.fxml"));
+			AnchorPane alterarDados = (AnchorPane) loader.load();
+			
+			AlterarDadosController alterarDadosController = loader.getController();
+			alterarDadosController.setMain(this);
+			alterarDadosController.setUsuarioTO(this.usuarioTO);
+			alterarDadosController.mostrarDadosUsuario();
+			
+			painelBase.setCenter(alterarDados);
+		}catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -139,4 +174,8 @@ public class Main extends Application {
 	public ObservableList<LivroTO> getLivrosAtrasados() {
 		return livrosAtrasados;
 	}		
+	
+	public String getToStringUsuario() {
+		return this.usuarioTO.toString();
+	}
 }
