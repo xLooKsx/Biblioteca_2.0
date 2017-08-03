@@ -9,6 +9,8 @@ import javafx.scene.text.Text;
 public class PainelBaseController {
 
 	@FXML
+	private Label lblNomeUsuario;
+	@FXML
 	private Label lblQtdMaterialEmprestado;
 	@FXML
 	private Label lblPossuiMaterialAtrasado;
@@ -57,6 +59,7 @@ public class PainelBaseController {
 	public void mostrarInforamacoes() {
 		int QtdMaterialAtrasado = main.getUsuarioTO().getQtdLivro() + main.getUsuarioTO().getQtdRevista();		
 
+		lblNomeUsuario.setText(this.main.getUsuarioTO().getNome());
 		lblQtdMaterialEmprestado.setText(Integer.toString(QtdMaterialAtrasado));
 		lblPossuiMaterialAtrasado.setText(BibliotecaUtils.checkarEmprestimos(main.getEmprestimos())==true?"Sim":"Não");
 	}

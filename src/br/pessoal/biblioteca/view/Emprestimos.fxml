@@ -46,7 +46,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Button layoutX="427.0" layoutY="420.0" mnemonicParsing="false" onAction="#handleFinalizaEmprestimo" text="Finalizar" />
+            <Button defaultButton="true" layoutX="427.0" layoutY="420.0" mnemonicParsing="false" onAction="#handleFinalizaEmprestimo" text="Finalizar" />
          </children>
       </Pane>
    </children>

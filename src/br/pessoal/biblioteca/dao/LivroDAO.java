@@ -58,10 +58,38 @@ public class LivroDAO {
 			throw new RuntimeException("Erro ao buscar acervo: "+e);
 		}finally {
 			try {
+				this.rs.close();
+				this.stm.close();				
 				this.connection.close();
 			} catch (SQLException e) {				
 				e.printStackTrace();
 			}
+			
 		}			
+	}
+	
+	public ObservableList<Integer> buscaDeLivro(String condicao){
+		
+		ObservableList<Integer> livrosBuscados = FXCollections.observableArrayList();
+		
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT id_acervo ")
+			.append("FROM acervo ")
+			.append("where nome_do_livro LIKE '%"+condicao+"%'");
+		try {
+			this.stm = this.connection.prepareStatement(sql.toString());
+			this.stm.execute();
+			
+			this.rs = this.stm.executeQuery();
+			logger.log(Level.INFO, this.stm.toString());
+			
+			while(this.rs.next()) {
+				Integer idLivro = this.rs.getInt(1);
+				livrosBuscados.add(idLivro);
+			}
+			return livrosBuscados;
+		} catch (Exception e) {
+			throw new RuntimeException("Erro ao realizar a busca do livro: "+e);
+		}		
 	}
 }
