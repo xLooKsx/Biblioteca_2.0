@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="459.0" prefWidth="503.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane prefHeight="459.0" prefWidth="503.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.pessoal.biblioteca.view.EmprestimosController">
    <children>
       <Pane layoutX="192.0" layoutY="123.0" prefHeight="459.0" prefWidth="503.0" style="-fx-border-color: #000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -16,37 +15,38 @@
                   <Font name="System Bold Italic" size="24.0" />
                </font>
             </Text>
-            <TableView editable="true" layoutX="9.0" layoutY="102.0" prefHeight="128.0" prefWidth="485.0">
+            <TableView fx:id="tabela" editable="true" layoutX="9.0" layoutY="102.0" prefHeight="128.0" prefWidth="485.0">
               <columns>
-                <TableColumn editable="false" prefWidth="227.0" resizable="false" text="Nome" />
-                  <TableColumn prefWidth="127.0" text="Data Devolução" />
-                  <TableColumn prefWidth="130.0" text="Data Emprestimo" />
+                <TableColumn fx:id="colunaNome" editable="false" prefWidth="197.0" resizable="false" text="Nome" />
+                  <TableColumn fx:id="colunaDevolucao" prefWidth="149.0" resizable="false" text="Data Devolução" />
+                  <TableColumn fx:id="colunaEmprestimo" prefWidth="137.0" resizable="false" text="Data Emprestimo" />
               </columns>
             </TableView>
             <Text layoutX="14.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID:" />
             <Text layoutX="110.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" />
-            <Label layoutX="28.0" layoutY="280.0" prefHeight="17.0" prefWidth="75.0" text="(ID aqui)" />
-            <Label layoutX="145.0" layoutY="280.0" prefHeight="17.0" prefWidth="190.0" text="(Nome Aqui)" />
+            <Label fx:id="lblId" layoutX="28.0" layoutY="280.0" prefHeight="17.0" prefWidth="66.0" text="(ID aqui)" />
+            <Label fx:id="lblNome" layoutX="145.0" layoutY="280.0" prefHeight="17.0" prefWidth="190.0" text="(Nome Aqui)" />
             <Text layoutX="338.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autor:" />
-            <Label layoutX="370.0" layoutY="280.0" prefHeight="17.0" prefWidth="119.0" text="(AutorAqui)" />
+            <Label fx:id="lblAutor" layoutX="370.0" layoutY="280.0" prefHeight="17.0" prefWidth="119.0" text="(AutorAqui)" />
             <Text layoutX="14.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Publicação:" />
-            <Label layoutX="74.0" layoutY="323.0" prefHeight="17.0" prefWidth="94.0" text="(publicação aqui)" />
-            <Text layoutX="180.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edição:" />
-            <Label layoutX="217.0" layoutY="323.0" prefHeight="17.0" prefWidth="94.0" text="(edição aqui)" />
-            <Text layoutX="292.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editora:" />
-            <Label layoutX="332.0" layoutY="323.0" prefHeight="17.0" prefWidth="102.0" text="(Editora aqui)" />
+            <Label fx:id="lblPublicacao" layoutX="73.0" layoutY="323.0" prefHeight="17.0" prefWidth="102.0" text="(publicação aqui)" textAlignment="RIGHT" />
+            <Text layoutX="186.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edição:" />
+            <Label fx:id="lblEdicao" layoutX="223.0" layoutY="323.0" prefHeight="17.0" prefWidth="75.0" text="(edição aqui)" />
+            <Text layoutX="311.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editora:" />
+            <Label fx:id="lblEditora" layoutX="351.0" layoutY="323.0" prefHeight="17.0" prefWidth="102.0" text="(Editora aqui)" />
             <Text layoutX="14.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo de Material:" />
-            <Label layoutX="103.0" layoutY="366.0" prefHeight="17.0" prefWidth="102.0" text="(TipoMaterial aqui)" />
+            <Label fx:id="lblTipoMaterial" layoutX="103.0" layoutY="366.0" prefHeight="17.0" prefWidth="102.0" text="(TipoMaterial aqui)" />
             <Text layoutX="217.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Material atrasado:">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Text>
-            <Label layoutX="319.0" layoutY="366.0" prefHeight="17.0" prefWidth="75.0" text="(Atraso aqui)">
+            <Label fx:id="lblMaterialAtrasado" layoutX="319.0" layoutY="366.0" prefHeight="17.0" prefWidth="75.0" text="(Atraso aqui)">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
+            <Button layoutX="427.0" layoutY="420.0" mnemonicParsing="false" onAction="#handleFinalizaEmprestimo" text="Finalizar" />
          </children>
       </Pane>
    </children>

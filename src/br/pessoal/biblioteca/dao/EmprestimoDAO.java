@@ -10,7 +10,6 @@ import java.util.logging.Logger;
 
 import br.pessoal.biblioteca.controller.Main;
 import br.pessoal.biblioteca.to.EmprestimoTO;
-import br.pessoal.biblioteca.to.LivroTO;
 
 public class EmprestimoDAO {
 
@@ -56,6 +55,7 @@ public class EmprestimoDAO {
 			while (rs.next()) {
 				
 				EmprestimoTO emprestimoTO = new EmprestimoTO();
+				emprestimoTO.setIdLivro(this.rs.getInt(1));
 				emprestimoTO.setNomeLivro(this.rs.getString(2));
 				emprestimoTO.setIdEmprestimo(this.rs.getInt(9));
 				emprestimoTO.setDataEmprestimo(this.rs.getDate(10).toLocalDate());
@@ -65,6 +65,37 @@ public class EmprestimoDAO {
 			}
 		}catch (SQLException e) {
 			 logger.log(Level.SEVERE, "Erro ao buscar acervo atrasado ",e);
+		}finally {
+			try {
+				this.connection.close();
+			} catch (SQLException e) {				
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void finalizaEmprestimo(int idAcervo, int matriculaUsuario) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("UPDATE emprestimo ")
+			.append("SET encerrado = true ")
+			.append("WHERE acervo_idacervo=? AND ")
+			.append("usuarios_matricula=?");
+		
+		try {
+			this.stm = this.connection.prepareStatement(sql.toString());
+			this.stm.setInt(1, idAcervo);
+			this.stm.setInt(2, matriculaUsuario);
+			this.stm.execute();
+			
+			this.logger.log(Level.INFO, this.stm.toString());
+		} catch (SQLException e) {
+			this.logger.log(Level.SEVERE, "Erro ao finalizar o emprestimo selecionado ", e);
+		}finally {
+			try {
+				this.connection.close();
+			} catch (SQLException e) {				
+				e.printStackTrace();
+			}
 		}
 	}
 }

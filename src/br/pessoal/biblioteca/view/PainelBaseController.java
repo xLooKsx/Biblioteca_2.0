@@ -28,6 +28,11 @@ public class PainelBaseController {
 	}
 
 	@FXML
+	private void handleEmprestimos() {
+		this.main.mostraEmprestimos();
+	}
+	
+	@FXML
 	private void handleAlterarSenha() {
 		this.main.mostraJanelaAlteracaoSenha();
 	}
@@ -35,6 +40,7 @@ public class PainelBaseController {
 	@FXML
 	private void handleSair() {
 		main.mostrarJanelaLogin();
+		this.main.getEmprestimos().clear();
 	}
 	
 	@FXML
@@ -42,14 +48,17 @@ public class PainelBaseController {
 		main.mostraJanelaAlterarDados();
 	}
 	
-	public void mostrarDadosUsuario() {
-		int QtdMaterialAtrasado = main.getUsuarioTO().getQtdLivro() + main.getUsuarioTO().getQtdRevista();		
-				
-		lblQtdMaterialEmprestado.setText(Integer.toString(QtdMaterialAtrasado));
-		lblPossuiMaterialAtrasado.setText(BibliotecaUtils.checkarEmprestimos(this.main.getEmprestimos())==true?"Sim":"Não");
-	}		
+	
 
 	public void setMain(Main main) {
 		this.main = main;
 	}
+	
+	public void mostrarInforamacoes() {
+		int QtdMaterialAtrasado = main.getUsuarioTO().getQtdLivro() + main.getUsuarioTO().getQtdRevista();		
+
+		lblQtdMaterialEmprestado.setText(Integer.toString(QtdMaterialAtrasado));
+		lblPossuiMaterialAtrasado.setText(BibliotecaUtils.checkarEmprestimos(main.getEmprestimos())==true?"Sim":"Não");
+	}
+	
 }

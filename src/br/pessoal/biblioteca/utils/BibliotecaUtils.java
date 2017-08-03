@@ -1,6 +1,7 @@
 package br.pessoal.biblioteca.utils;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import br.pessoal.biblioteca.controller.Main;
@@ -11,6 +12,9 @@ import javafx.collections.ObservableList;
 
 public class BibliotecaUtils {
 
+	private static final String DATE="dd-MMMM-yyyy";
+	private static final DateTimeFormatter DATE_FORMATER = DateTimeFormatter.ofPattern(DATE);
+	
 	public static ResourceBundle getConfig() {
 		ResourceBundle bundle = ResourceBundle.getBundle("br.pessoal.biblioteca.resource.Mensagem");
 		return bundle;
@@ -135,5 +139,19 @@ public class BibliotecaUtils {
 			}
 		}
 		return null;
+	}
+	
+	public static String formatarData(LocalDate date) {
+		return DATE_FORMATER.format(date);
+	}
+	
+	public static String setTipoMaterial(String tipo) {
+		switch (tipo) {
+		case "L":
+			return "Livro";
+
+		default:
+			return "Revista";
+		}
 	}
 }

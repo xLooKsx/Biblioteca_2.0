@@ -2,7 +2,6 @@ package br.pessoal.biblioteca.view;
 
 import br.pessoal.biblioteca.controller.Main;
 import br.pessoal.biblioteca.dao.EmprestimoDAO;
-import br.pessoal.biblioteca.dao.LivroDAO;
 import br.pessoal.biblioteca.dao.LoginDAO;
 import br.pessoal.biblioteca.to.UsuarioTO;
 import javafx.fxml.FXML;

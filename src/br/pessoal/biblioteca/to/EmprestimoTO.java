@@ -76,7 +76,7 @@ public class EmprestimoTO {
 	public void setNomeLivro(String nomeLivro) {
 		this.nomeLivro.set(nomeLivro);
 	}
-	public StringProperty nomeLivroEmprestimo() {
+	public StringProperty nomeLivroEmprestimoProperty() {
 		return this.nomeLivro;
 	}
 

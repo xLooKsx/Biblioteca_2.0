@@ -4,12 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import br.pessoal.biblioteca.controller.Main;
-import br.pessoal.biblioteca.to.EmprestimoTO;
 import br.pessoal.biblioteca.to.LivroTO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -57,10 +54,14 @@ public class LivroDAO {
 			}
 			
 			return acervo;
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		
-		return null;		
+		} catch (SQLException e) {
+			throw new RuntimeException("Erro ao buscar acervo: "+e);
+		}finally {
+			try {
+				this.connection.close();
+			} catch (SQLException e) {				
+				e.printStackTrace();
+			}
+		}			
 	}
 }
