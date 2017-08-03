@@ -82,7 +82,9 @@ public class AlterarDadosController {
 				Alert alerta = new Alert(AlertType.INFORMATION);
 				alerta.setTitle("Alteração de dados pessoais");
 				alerta.setHeaderText("Dados pessoais alterados com sucesso");
-				alerta.showAndWait();				
+				alerta.showAndWait();	
+				
+				this.main.getPainelBaseController().mostrarInforamacoes();
 			}
 		}
 	}

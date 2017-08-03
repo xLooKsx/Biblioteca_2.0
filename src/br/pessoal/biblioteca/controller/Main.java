@@ -5,12 +5,12 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import br.pessoal.biblioteca.dao.LivroDAO;
 import br.pessoal.biblioteca.to.EmprestimoTO;
 import br.pessoal.biblioteca.to.LivroTO;
 import br.pessoal.biblioteca.to.UsuarioTO;
 import br.pessoal.biblioteca.view.AlterarDadosController;
 import br.pessoal.biblioteca.view.AlterarSenhaController;
+import br.pessoal.biblioteca.view.BuscaController;
 import br.pessoal.biblioteca.view.EmprestimosController;
 import br.pessoal.biblioteca.view.LoginController;
 import br.pessoal.biblioteca.view.PainelBaseController;
@@ -40,7 +40,7 @@ public class Main extends Application {
 	Logger logger = Logger.getLogger(Main.class.getName());
 		
 	public Main() {		
-		this.livros = new LivroDAO().acervo();
+		
 	}
 
 	@Override
@@ -59,8 +59,7 @@ public class Main extends Application {
 			loader.setLocation(Main.class.getResource("/br/pessoal/biblioteca/view/PainelBase.fxml"));
 			this.painelBase = (BorderPane) loader.load();
 			
-			this.primaryStage.setTitle("Biblioteca");
-			this.primaryStage.centerOnScreen();
+			this.primaryStage.setTitle("Biblioteca");					
 			
 			Scene cena = new Scene(painelBase);
 			this.primaryStage.setScene(cena);
@@ -69,6 +68,7 @@ public class Main extends Application {
 			this.painelBaseController.setMain(this);
 			this.painelBaseController.mostrarInforamacoes();
 			
+			this.primaryStage.centerOnScreen();
 			this.primaryStage.show();
 		}catch (IOException e) {
 			logger.log(Level.SEVERE, "Erro ao mostrar o painel base ", e);
@@ -80,6 +80,10 @@ public class Main extends Application {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("/br/pessoal/biblioteca/view/Busca.fxml"));
 			AnchorPane boasVindas = (AnchorPane) loader.load();
+			
+			BuscaController buscaController = loader.getController();
+			buscaController.setMain(this);
+			
 			
 			painelBase.setCenter(boasVindas);						
 		}catch (IOException e) {
@@ -197,6 +201,14 @@ public class Main extends Application {
 	
 	public ObservableList<EmprestimoTO> getEmprestimos() {
 		return emprestimos;
+	}
+	
+	public void setLivros(ObservableList<LivroTO> livros) {
+		this.livros = livros;
+	}
+
+	public void setLogger(Logger logger) {
+		this.logger = logger;
 	}
 
 	public ObservableList<LivroTO> getLivros() {

@@ -100,7 +100,7 @@ public class EmprestimosController {
 			this.lblTipoMaterial.setText("");
 			this.lblMaterialAtrasado.setText("");
 		}else {
-			LivroTO livroTO = new BibliotecaUtils().livroEscolhido(emprestimo.getIdLivro(), this.main);	
+			LivroTO livroTO = BibliotecaUtils.livroEscolhido(emprestimo.getIdLivro(), this.main);	
 			this.lblId.setText(Integer.toString(livroTO.getIdLivro()));
 			this.lblNome.setText(emprestimo.getNomeLivro());
 			this.lblAutor.setText(livroTO.getAutor());

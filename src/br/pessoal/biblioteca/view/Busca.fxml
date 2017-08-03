@@ -6,72 +6,81 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="459.0" prefWidth="503.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="459.0" prefWidth="503.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.pessoal.biblioteca.view.BuscaController">
    <children>
-      <Text layoutX="38.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buscar por titulo:" />
-      <TextField layoutX="134.0" layoutY="40.0" prefHeight="25.0" prefWidth="273.0" />
-      <Button defaultButton="true" layoutX="414.0" layoutY="40.0" mnemonicParsing="false" text="Buscar" />
-      <TableView layoutX="10.0" layoutY="104.0" prefHeight="84.0" prefWidth="481.0">
-        <columns>
-          <TableColumn editable="false" prefWidth="132.0" resizable="false" sortType="DESCENDING" text="Id" />
-            <TableColumn editable="false" prefWidth="348.0" resizable="false" sortType="DESCENDING" text="Nome" />
-        </columns>
-      </TableView>
-      <Pane layoutX="38.0" layoutY="199.0" prefHeight="195.0" prefWidth="427.0">
+      <Text layoutX="24.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buscar por titulo:" />
+      <TextField fx:id="txtTitulo" layoutX="116.0" layoutY="56.0" prefHeight="25.0" prefWidth="293.0" />
+      <Button defaultButton="true" layoutX="416.0" layoutY="56.0" mnemonicParsing="false" onAction="#handleBuscar" text="Buscar" />
+      <Pane fx:id="panelInformacoes" disable="true" layoutX="24.0" layoutY="199.0" prefHeight="246.0" prefWidth="456.0" style="-fx-border-color: #000;">
          <children>
-            <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID:">
+            <Text layoutX="14.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID:">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Text>
-            <Text layoutX="126.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" />
-            <Text layoutX="12.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição:" />
-            <Text layoutX="12.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autor:" />
-            <Text layoutX="137.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Publicação:" />
-            <Label layoutX="28.0" layoutY="14.0" prefHeight="17.0" prefWidth="90.0" text="(id aqui)">
+            <Text layoutX="130.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" />
+            <Text layoutX="14.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição:" />
+            <Text layoutX="32.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autor:" />
+            <Text layoutX="157.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Publicação:" />
+            <Label fx:id="lblId" layoutX="32.0" layoutY="34.0" prefHeight="17.0" prefWidth="90.0" text="(id aqui)">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="161.0" layoutY="14.0" prefHeight="17.0" prefWidth="149.0" text="(nome aqui)" />
-            <Label layoutX="73.0" layoutY="46.0" prefHeight="46.0" prefWidth="335.0" text="(descrição aqui)" />
-            <Label layoutX="48.0" layoutY="103.0" prefHeight="17.0" prefWidth="79.0" text="(autor aqui)" />
-            <Label layoutX="196.0" layoutY="103.0" prefHeight="17.0" prefWidth="71.0" text="(Publicação)" />
-            <Text layoutX="274.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edição:" />
-            <Text layoutX="16.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editora:" />
-            <Label layoutX="311.0" layoutY="103.0" prefHeight="17.0" prefWidth="52.0" text="(edição)" />
-            <Label layoutX="62.0" layoutY="131.0" text="(Editora aqui)" />
-            <Text layoutX="149.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Em Circulação:">
+            <Label fx:id="lblNome" layoutX="170.0" layoutY="34.0" prefHeight="17.0" prefWidth="149.0" text="(nome aqui)" />
+            <Label fx:id="lblDescricao" layoutX="77.0" layoutY="66.0" prefHeight="58.0" prefWidth="335.0" text="(descrição aqui)" />
+            <Label fx:id="lblAutor" layoutX="68.0" layoutY="136.0" prefHeight="17.0" prefWidth="79.0" text="(autor aqui)" />
+            <Label fx:id="lblPublicacao" layoutX="216.0" layoutY="134.0" prefHeight="17.0" prefWidth="112.0" text="(Publicação)" />
+            <Text layoutX="341.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edição:" />
+            <Text layoutX="30.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editora:" />
+            <Label fx:id="lblEdicao" layoutX="378.0" layoutY="134.0" prefHeight="17.0" prefWidth="52.0" text="(edição)" />
+            <Label fx:id="lblEditora" layoutX="76.0" layoutY="170.0" text="(Editora aqui)" />
+            <Text layoutX="231.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Em Circulação:">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Text>
-            <Label layoutX="231.0" layoutY="131.0" text="(resposta)">
+            <Label fx:id="lblCirculacao" layoutX="313.0" layoutY="170.0" text="(resposta)">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Text layoutX="13.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emprestado:">
+            <Text layoutX="31.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emprestado:">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Text>
-            <Text layoutX="155.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservado:">
+            <Text layoutX="231.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservado:">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Text>
-            <Label layoutX="83.0" layoutY="165.0" text="(Resposta)">
+            <Label fx:id="lblEmprestado" layoutX="101.0" layoutY="215.0" text="(Resposta)">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="218.0" layoutY="165.0" text="(Resposta)">
+            <Label fx:id="lblReservado" layoutX="294.0" layoutY="215.0" text="(Resposta)">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
+            <Text layoutX="10.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informações" textAlignment="CENTER" wrappingWidth="431.0">
+               <font>
+                  <Font name="System Italic" size="20.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
+      <Text layoutX="10.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buscar" textAlignment="CENTER" wrappingWidth="483.0">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Text>
+      <TableView fx:id="tabelaLivro" disable="true" layoutX="7.0" layoutY="89.0" prefHeight="105.0" prefWidth="490.0">
+        <columns>
+          <TableColumn fx:id="colunaNome" editable="false" prefWidth="488.0" resizable="false" text="Nome" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
