@@ -39,7 +39,7 @@ public class LoginController {
 			this.usuarioTO = new LoginDAO().buscarUsuario(Integer.parseInt(this.txtUsuario.getText()), this.pwSenha.getText());
 			if (this.usuarioTO.getContaAtiva()) {
 				main.setUsuarioTO(this.usuarioTO);
-				new EmprestimoDAO().buscarEmprestimosAtrasados(this.main);
+				new EmprestimoDAO().listarEmprestimos(this.main.getUsuarioTO().getMatricula(), this.main);
 				main.mostraPainelBase();
 				main.mostrarJanelaBusca();
 			}else {

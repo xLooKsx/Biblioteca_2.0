@@ -5,10 +5,13 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import br.pessoal.biblioteca.dao.LivroDAO;
+import br.pessoal.biblioteca.to.EmprestimoTO;
 import br.pessoal.biblioteca.to.LivroTO;
 import br.pessoal.biblioteca.to.UsuarioTO;
 import br.pessoal.biblioteca.view.AlterarDadosController;
 import br.pessoal.biblioteca.view.AlterarSenhaController;
+import br.pessoal.biblioteca.view.EmprestimosController;
 import br.pessoal.biblioteca.view.LoginController;
 import br.pessoal.biblioteca.view.PainelBaseController;
 import br.pessoal.biblioteca.view.RecuperacaoSenhaController;
@@ -27,12 +30,17 @@ public class Main extends Application {
 
 	private Stage primaryStage;
 	private UsuarioTO usuarioTO;
-	private BorderPane painelBase;
-	private ObservableList<LivroTO> livrosAtrasados = FXCollections.observableArrayList();
+	private BorderPane painelBase;	
+	
+	private PainelBaseController painelBaseController;
+	
+	private ObservableList<EmprestimoTO> emprestimos = FXCollections.observableArrayList();
+	private ObservableList<LivroTO> livros = FXCollections.observableArrayList();
 	
 	Logger logger = Logger.getLogger(Main.class.getName());
 		
 	public Main() {		
+		this.livros = new LivroDAO().acervo();
 	}
 
 	@Override
@@ -57,9 +65,9 @@ public class Main extends Application {
 			Scene cena = new Scene(painelBase);
 			this.primaryStage.setScene(cena);
 						
-			PainelBaseController painelBaseController = loader.getController();
-			painelBaseController.setMain(this);
-			painelBaseController.mostrarDadosUsuario();
+			this.painelBaseController = loader.getController();
+			this.painelBaseController.setMain(this);
+			this.painelBaseController.mostrarInforamacoes();
 			
 			this.primaryStage.show();
 		}catch (IOException e) {
@@ -135,7 +143,7 @@ public class Main extends Application {
 			
 			painelBase.setCenter(alterarSenha);
 		}catch (Exception e) {
-			logger.log(Level.SEVERE, "Não foi possivel carrecar a janela de alterar Senha ", e);
+			logger.log(Level.SEVERE, "Não foi possivel carregar a janela de alterar Senha ", e);
 		}
 	}
 	
@@ -152,7 +160,23 @@ public class Main extends Application {
 			
 			painelBase.setCenter(alterarDados);
 		}catch (IOException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE, "Não foi possivel carregar a janela de alterar Dados ", e);
+		}
+	}
+	
+	public void mostraEmprestimos() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("/br/pessoal/biblioteca/view/Emprestimos.fxml"));
+			AnchorPane emprestimos = (AnchorPane) loader.load();
+			
+			EmprestimosController emprestimosController = loader.getController();
+			emprestimosController.setMain(this);
+			emprestimosController.inicializaJanela();
+			
+			painelBase.setCenter(emprestimos);
+		} catch (IOException e) {
+			logger.log(Level.SEVERE, "Não foi possivel carregar a janela de Emprestimos ", e);
 		}
 	}
 	
@@ -170,12 +194,24 @@ public class Main extends Application {
 	public Stage getPrimaryStage() {
 		return primaryStage;
 	}
-
-	public ObservableList<LivroTO> getLivrosAtrasados() {
-		return livrosAtrasados;
-	}		
 	
+	public ObservableList<EmprestimoTO> getEmprestimos() {
+		return emprestimos;
+	}
+
+	public ObservableList<LivroTO> getLivros() {
+		return livros;
+	}
+
 	public String getToStringUsuario() {
 		return this.usuarioTO.toString();
 	}
+
+	public BorderPane getPainelBase() {
+		return painelBase;
+	}
+
+	public PainelBaseController getPainelBaseController() {
+		return painelBaseController;
+	}	
 }

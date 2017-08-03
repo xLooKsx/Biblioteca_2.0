@@ -34,6 +34,12 @@ public class UsuarioDAO {
 			logger.log(Level.INFO, stm.toString());
 		}catch (SQLException e) {
 			logger.log(Level.SEVERE, "Erro ao alterar a senha do usuario ", e);
+		}finally {
+			try {
+				this.connection.close();
+			} catch (SQLException e) {				
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -64,6 +70,12 @@ public class UsuarioDAO {
 			logger.log(Level.INFO, stm.toString());
 		}catch (SQLException e) {
 				logger.log(Level.SEVERE, "Erro ao alterar dados pessoais do usuario ",e); 
+		}finally {
+			try {
+				this.connection.close();
+			} catch (SQLException e) {				
+				e.printStackTrace();
+			}
 		}
 	}
 	

@@ -116,7 +116,7 @@
                </font></Text>
             <VBox layoutX="11.0" layoutY="321.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="164.0" text="Meus Emprestimos" />
+                  <Button layoutX="11.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleEmprestimos"  prefHeight="25.0" prefWidth="164.0" text="Meus Emprestimos" />
                   <Button layoutX="11.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleAlterarDados" prefHeight="25.0" prefWidth="164.0" text="Alterar Dados Pessoais" />
                   <Button layoutX="11.0" layoutY="394.0" mnemonicParsing="false" onAction="#handleAlterarSenha" prefHeight="25.0" prefWidth="164.0" text="Alterar Senha" />
                   <Button layoutX="11.0" layoutY="426.0" mnemonicParsing="false" onAction="#handleSair" prefHeight="25.0" prefWidth="164.0" text="Sair" />
