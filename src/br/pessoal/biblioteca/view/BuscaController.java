@@ -7,10 +7,12 @@ import br.pessoal.biblioteca.utils.BibliotecaUtils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
 
 public class BuscaController {
@@ -60,14 +62,33 @@ public class BuscaController {
 
 	@FXML
 	private void handleBuscar() {
-		this.livrosRetornados.clear();
-		resultadoBuscaLivros = new LivroDAO().buscaDeLivro(this.txtTitulo.getText());
-		for (Integer idLivroDaVez : resultadoBuscaLivros) {
-			livrosRetornados.add(BibliotecaUtils.livroEscolhido(idLivroDaVez, this.main));			
+		if (!this.txtTitulo.getText().isEmpty()) {
+			System.out.println(this.txtTitulo.getText());
+			this.livrosRetornados.clear();
+			resultadoBuscaLivros = new LivroDAO().buscaDeLivro(this.txtTitulo.getText());
+			for (Integer idLivroDaVez : resultadoBuscaLivros) {
+				livrosRetornados.add(BibliotecaUtils.livroEscolhido(idLivroDaVez, this.main));			
+			}
+			this.tabelaLivro.setItems(livrosRetornados);
+			this.tabelaLivro.setDisable(false);
+			this.panelInformacoes.setDisable(false);
+			if (livrosRetornados.size() == 0) {
+				Alert alerta = new Alert(AlertType.WARNING);				
+				alerta.setTitle("Busca de livos");
+				alerta.setHeaderText("Nenhum resultado encontrado");
+				alerta.setContentText("Não foi possivel achar nenhum resultado com: "+this.txtTitulo.getText().toUpperCase());
+				alerta.showAndWait();
+				this.tabelaLivro.setDisable(true);
+				this.panelInformacoes.setDisable(true);
+			}
+		}else {
+			Alert alerta = new Alert(AlertType.ERROR);
+			alerta.setTitle("Busca de livos");
+			alerta.setHeaderText("Nenhum resultado encontrado");
+			alerta.setContentText("Favor digitar um titulo no campo de busca");
+			alerta.showAndWait();
 		}
-		this.tabelaLivro.setItems(livrosRetornados);
-		this.tabelaLivro.setDisable(false);
-		this.panelInformacoes.setDisable(false);
+
 	}
 	
 	private void mostrarDetalhes(LivroTO livroTO) {

@@ -79,4 +79,43 @@ public class UsuarioDAO {
 		}
 	}
 	
+	public void adicionarUsuario(UsuarioTO usuarioTO) {
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append("INSERT INTO usuarios(")
+				.append("matricula, ")
+				.append("senha, ")
+				.append("nome, ")
+				.append("ultimo_nome, ")
+				.append("logradouro, ")
+				.append("tipo_logradouro, ")
+				.append("comp_logradouro, ")
+				.append("telefone, ")
+				.append("email, ")
+				.append("is_ativa,")
+				.append("is_biblioteca, ")
+				.append("tipo_usuario, ")
+				.append("qtd_livro, ")
+				.append("qtd_revista) ")
+				.append("VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, true, ?, ?, 0, 0)");
+			
+			this.stm = this.connection.prepareStatement(sql.toString());
+			this.stm.setInt(1, usuarioTO.getMatricula());
+			this.stm.setString(2, usuarioTO.getSenha());
+			this.stm.setString(3, usuarioTO.getNome().toUpperCase());
+			this.stm.setString(4, usuarioTO.getUltimoNome().toUpperCase());
+			this.stm.setString(5, usuarioTO.getLogradouro().toUpperCase());
+			this.stm.setString(6, usuarioTO.getTipoLogradouro().toUpperCase());
+			this.stm.setString(7, usuarioTO.getComplLogradouro().toUpperCase());
+			this.stm.setLong(8, usuarioTO.getTelefone());
+			this.stm.setString(9, usuarioTO.getEmail().toUpperCase());
+			this.stm.setBoolean(10, usuarioTO.getBibliotecario());
+			this.stm.setString(11, usuarioTO.getTipoUsuario().toUpperCase());
+			
+			this.stm.execute();
+			logger.log(Level.INFO, this.stm.toString());
+		} catch (SQLException e) {
+			 logger.log(Level.SEVERE, "Erro ao cadastrar novo usuario ", e);
+		}
+	}
 }

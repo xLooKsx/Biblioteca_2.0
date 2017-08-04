@@ -42,7 +42,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastro de Usuario" GridPane.rowIndex="1">
+            <Text onMouseClicked="#handleCadastroUsuario" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastro de Usuario" GridPane.rowIndex="1">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
@@ -84,7 +84,7 @@
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font></Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Buscar">
+            <Text onMouseClicked="#handleBuscar" strokeType="OUTSIDE" strokeWidth="0.0" text="Buscar" wrappingWidth="143.46875">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>

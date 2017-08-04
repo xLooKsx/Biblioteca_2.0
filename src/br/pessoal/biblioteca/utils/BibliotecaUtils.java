@@ -154,4 +154,38 @@ public class BibliotecaUtils {
 			return "Revista";
 		}
 	}
+	
+	public static String getTipoUsuario(String tipo) {
+		switch (tipo.trim()) {
+		case "Professor":
+			return "P";			
+		case "Funcionario":
+			return "F";	
+		case "Aluno":
+			return "A";		
+		default:
+			return null;
+		}
+	}
+	
+	public static String setTipoUsuario(String tipo) {
+		switch (tipo.trim()) {
+		case "AL":
+			return "Alameda";			
+		case "AV":
+			return "Avenida";	
+		case "B":
+			return "Beco";
+		case "EST":
+			return "Estrada";
+		case "ROD":
+			return "Rodovia";
+		case "R":
+			return "Rua";
+		case "TV":
+			return "Travessa";
+		default:
+			return null;
+		}
+	}
 }

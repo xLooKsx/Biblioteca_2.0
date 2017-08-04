@@ -41,7 +41,7 @@ public class AlterarDadosController {
 	private ObservableList<String> tiposEndereco = FXCollections.observableArrayList("Alameda", "Avenida", "Beco", "Estrada", "Rodovia", "Rua", "Travessa");	
 	
 	@FXML
-	public void initialize() {		
+	private void initialize() {		
 		comboBoxTipoEndereco.getItems().addAll(tiposEndereco);
 	}
 	
@@ -90,37 +90,37 @@ public class AlterarDadosController {
 	}
 	
 	private boolean camposValidos() {
-		String menssagemErro = "";
+		String mensagemErro = "";
 		
 		if (this.txtNome.getText().trim().length() == 0 || this.txtNome.getText() == null) {
-			menssagemErro += "Nome invalido\n";
+			mensagemErro += "Nome invalido\n";
 		}
 		if (this.txtSobrenome.getText().trim().length() == 0 || this.txtSobrenome.getText() == null) {
-			menssagemErro += "Sobrenome invalido\n";
+			mensagemErro += "Sobrenome invalido\n";
 		}
 		if (this.comboBoxTipoEndereco.getValue() == null) {
-			menssagemErro += "Tipo do endereço invalido\n";
+			mensagemErro += "Tipo do endereço invalido\n";
 		}
 		if (this.txtEndereco.getText().trim().length() == 0 || this.txtEndereco.getText() == null) {
-			menssagemErro += "Enderenço invalido\n";
+			mensagemErro += "Enderenço invalido\n";
 		}
 		if(this.txtComplemento.getText() == null) {
 			this.txtComplemento.setText("");
 		}
 		if(!BibliotecaUtils.validarTelefone(this.txtTelefone.getText().toString())) {
-			menssagemErro += "O telefone deve ser preenchido com a sua mascara(xx)1234-5678 ou (xx)9123-45678\n";
+			mensagemErro += "O telefone deve ser preenchido com a sua mascara(xx)1234-5678 ou (xx)9123-45678\n";
 		}
 		if (!this.txtEmail.getText().contains("@")) {
-			menssagemErro += "Email invalido\n";
+			mensagemErro += "Email invalido\n";
 		}
-		if (menssagemErro.length() == 0) {
+		if (mensagemErro.length() == 0) {
 			
 			return true;
 		}else {
 			Alert alerta = new Alert(AlertType.WARNING);
 			alerta.setTitle("alteração de dados");
 			alerta.setHeaderText("Não foi possivel alterar os dados");			
-			alerta.setContentText(menssagemErro);
+			alerta.setContentText(mensagemErro);
 			alerta.showAndWait();
 		}
 		return false;
