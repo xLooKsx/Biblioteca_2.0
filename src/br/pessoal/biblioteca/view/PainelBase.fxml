@@ -49,7 +49,7 @@
                <GridPane.margin>
                   <Insets left="12.0" />
                </GridPane.margin></Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastro de Livro" GridPane.rowIndex="2">
+            <Text onMouseClicked="#handleCadastroLivro" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastro de Livro" wrappingWidth="148.02734375" GridPane.rowIndex="2">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>

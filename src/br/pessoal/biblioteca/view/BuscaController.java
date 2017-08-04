@@ -11,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
@@ -28,9 +29,7 @@ public class BuscaController {
 	@FXML
 	private Label lblId;
 	@FXML
-	private Label lblNome;
-	@FXML
-	private Label lblDescricao;
+	private Label lblNome;	
 	@FXML
 	private Label lblAutor;
 	@FXML
@@ -47,12 +46,19 @@ public class BuscaController {
 	private Label lblReservado;
 	
 	@FXML
+	private TextArea txaDescricao;
+	
+	@FXML
 	private Pane panelInformacoes;
 	
 	private Main main;
 	private ObservableList<Integer> resultadoBuscaLivros = FXCollections.observableArrayList();
 	private ObservableList<LivroTO> livrosRetornados = FXCollections.observableArrayList();
 	
+	public BuscaController() {
+		
+	}
+
 	@FXML
 	private void initialize() {
 		this.colunaNome.setCellValueFactory(cellData -> cellData.getValue().nomeLivroProperty());
@@ -95,7 +101,7 @@ public class BuscaController {
 		if (livroTO == null) {
 			this.lblId.setText("");
 			this.lblNome.setText("");
-			this.lblDescricao.setText("");
+			this.txaDescricao.setText("");
 			this.lblAutor.setText("");
 			this.lblPublicacao.setText("");
 			this.lblEdicao.setText("");
@@ -106,7 +112,7 @@ public class BuscaController {
 		}else {
 			this.lblId.setText(Integer.toString(livroTO.getIdLivro()));
 			this.lblNome.setText(livroTO.getNomeLivro());
-			this.lblDescricao.setText(livroTO.getDescricao());
+			this.txaDescricao.setText(livroTO.getDescricao());
 			this.lblAutor.setText(livroTO.getAutor());
 			this.lblPublicacao.setText(BibliotecaUtils.formatarData(livroTO.getPublicacao()));
 			this.lblEdicao.setText(Integer.toString(livroTO.getEdicao()));

@@ -67,6 +67,8 @@ public class EmprestimoDAO {
 			 logger.log(Level.SEVERE, "Erro ao buscar acervo atrasado ",e);
 		}finally {
 			try {
+				this.rs.close();
+				this.stm.close();
 				this.connection.close();
 			} catch (SQLException e) {				
 				e.printStackTrace();
@@ -92,6 +94,7 @@ public class EmprestimoDAO {
 			this.logger.log(Level.SEVERE, "Erro ao finalizar o emprestimo selecionado ", e);
 		}finally {
 			try {
+				this.stm.close();
 				this.connection.close();
 			} catch (SQLException e) {				
 				e.printStackTrace();

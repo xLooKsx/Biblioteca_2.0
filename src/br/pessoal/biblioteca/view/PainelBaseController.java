@@ -30,6 +30,11 @@ public class PainelBaseController {
 	}
 
 	@FXML
+	private void handleCadastroLivro() {
+		this.main.mostrarCadastroLivro();
+	}
+	
+	@FXML
 	private void handleCadastroUsuario() {
 		this.main.mostrarCadastroUsuario();
 	}

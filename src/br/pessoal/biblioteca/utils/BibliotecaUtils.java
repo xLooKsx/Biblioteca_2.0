@@ -155,14 +155,14 @@ public class BibliotecaUtils {
 		}
 	}
 	
-	public static String getTipoUsuario(String tipo) {
+	public static String getTipoMaterial(String tipo) {
 		switch (tipo.trim()) {
-		case "Professor":
-			return "P";			
-		case "Funcionario":
-			return "F";	
-		case "Aluno":
-			return "A";		
+		case "Livro":
+			return "L";			
+		case "Revista":
+			return "R";	
+		case "Multimidia":
+			return "M";		
 		default:
 			return null;
 		}
