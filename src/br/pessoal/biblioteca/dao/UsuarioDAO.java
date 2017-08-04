@@ -108,7 +108,7 @@ public class UsuarioDAO {
 			this.stm.setString(6, usuarioTO.getTipoLogradouro().toUpperCase());
 			this.stm.setString(7, usuarioTO.getComplLogradouro().toUpperCase());
 			this.stm.setLong(8, usuarioTO.getTelefone());
-			
+			this.stm.setString(9, usuarioTO.getEmail().toUpperCase());
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
