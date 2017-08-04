@@ -184,6 +184,18 @@ public class Main extends Application {
 		}
 	}
 	
+	public void mostrarCadastroUsuario() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("/br/pessoal/biblioteca/view/CadastroUsuario.fxml"));
+			AnchorPane cadastroUsuario = (AnchorPane) loader.load();
+			
+			painelBase.setCenter(cadastroUsuario);
+		} catch (IOException e) {
+			logger.log(Level.SEVERE, "Não foi possivel carregar a janela de Cadastro Usuario ", e);
+		}
+	}
+	
 	public static void main(String[] args) {
 		launch(args);
 	}

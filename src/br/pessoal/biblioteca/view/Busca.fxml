@@ -27,8 +27,8 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="lblNome" layoutX="170.0" layoutY="34.0" prefHeight="17.0" prefWidth="149.0" text="(nome aqui)" />
-            <Label fx:id="lblDescricao" layoutX="77.0" layoutY="66.0" prefHeight="58.0" prefWidth="335.0" text="(descrição aqui)" />
+            <Label fx:id="lblNome" layoutX="170.0" layoutY="34.0" prefHeight="17.0" prefWidth="274.0" text="(nome aqui)" />
+            <Label fx:id="lblDescricao" layoutX="77.0" layoutY="66.0" prefHeight="52.0" prefWidth="335.0" text="(descrição aqui)" />
             <Label fx:id="lblAutor" layoutX="68.0" layoutY="136.0" prefHeight="17.0" prefWidth="79.0" text="(autor aqui)" />
             <Label fx:id="lblPublicacao" layoutX="216.0" layoutY="134.0" prefHeight="17.0" prefWidth="112.0" text="(Publicação)" />
             <Text layoutX="341.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edição:" />
