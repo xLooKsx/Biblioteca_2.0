@@ -1,6 +1,7 @@
 package br.pessoal.biblioteca.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -90,6 +91,57 @@ public class LivroDAO {
 			return livrosBuscados;
 		} catch (Exception e) {
 			throw new RuntimeException("Erro ao realizar a busca do livro: "+e);
+		}finally {
+			try {
+				this.rs.close();
+				this.stm.close();
+				this.connection.close();
+			} catch (SQLException e) {				
+				e.printStackTrace();
+			}
 		}		
+	}
+	
+	public void adicionarLivro(LivroTO livroTO) {
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append("INSERT INTO acervo(")
+				.append("id_acervo, ")
+				.append("nome_do_livro, ")
+				.append("descricao, ")
+				.append("autor, ")
+				.append("publicacao, ")
+				.append("circ, ")
+				.append("edicao, ")
+				.append("editora, ")
+				.append("is_emprestado, ")
+				.append("tipo, ")
+				.append("reservado)")
+				.append("VALUES(?, ?, ?, ?, ?, ?, ?, ?, false, ?, false)");
+			
+			this.stm = this.connection.prepareStatement(sql.toString());
+			this.stm.setInt(1, livroTO.getIdLivro());
+			this.stm.setString(2, livroTO.getNomeLivro());
+			this.stm.setString(3, livroTO.getDescricao());
+			this.stm.setString(4, livroTO.getAutor());
+			this.stm.setDate(5, Date.valueOf(livroTO.getPublicacao()));
+			this.stm.setBoolean(6, livroTO.getCircular());
+			this.stm.setInt(7, livroTO.getEdicao());
+			this.stm.setString(8, livroTO.getEditora());
+			this.stm.setString(9, livroTO.getTipo());
+			
+			this.stm.execute();
+			logger.log(Level.INFO, this.stm.toString());
+		} catch (SQLException e) {
+			logger.log(Level.SEVERE, "Erro ao cadastrar livro ", e);
+		}finally {
+			try {
+				this.stm.close();
+				this.connection.close();
+			} catch (SQLException e) {				
+				e.printStackTrace();
+			}
+		}
+		
 	}
 }

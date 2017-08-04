@@ -196,6 +196,18 @@ public class Main extends Application {
 		}
 	}
 	
+	public void mostrarCadastroLivro() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("/br/pessoal/biblioteca/view/CadastroLivro.fxml"));
+			AnchorPane cadastroLivro = (AnchorPane) loader.load();
+
+			painelBase.setCenter(cadastroLivro);
+		} catch (IOException e) {
+			logger.log(Level.SEVERE, "Não foi possivel carregar a janela de Cadastro Livro ", e);
+		}
+	}
+	
 	public static void main(String[] args) {
 		launch(args);
 	}

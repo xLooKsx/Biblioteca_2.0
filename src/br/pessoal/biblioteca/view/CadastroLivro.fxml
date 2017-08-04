@@ -1,17 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="459.0" prefWidth="503.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane prefHeight="459.0" prefWidth="503.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.pessoal.biblioteca.view.CadastroLivroController">
    <children>
-      <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastro de Livro">
+      <Text layoutX="9.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastro de Livro" textAlignment="CENTER" wrappingWidth="484.86328125">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Text>
+      <Text layoutX="14.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id Livro:" />
+      <TextField fx:id="txtIdLivro" layoutX="35.0" layoutY="68.0" />
+      <Text layoutX="222.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" />
+      <TextField fx:id="txtNome" layoutX="228.0" layoutY="68.0" prefHeight="25.0" prefWidth="255.0" />
+      <Text layoutX="14.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição" />
+      <TextArea fx:id="txaDescricao" layoutX="29.0" layoutY="132.0" prefHeight="79.0" prefWidth="445.0" />
+      <Text layoutX="18.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autor" />
+      <TextField fx:id="txtAutor" layoutX="29.0" layoutY="259.0" />
+      <DatePicker fx:id="dtPublicacao" layoutX="228.0" layoutY="259.0" />
+      <Text layoutX="213.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Publicação" />
+      <Text layoutX="18.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Em circulação:" />
+      <HBox layoutX="17.0" layoutY="352.0" spacing="12.0">
+         <children>
+            <RadioButton fx:id="rbtsim" layoutX="12.0" layoutY="352.0" mnemonicParsing="false" text="Sim" />
+            <RadioButton fx:id="rbtnao" layoutX="56.0" layoutY="352.0" mnemonicParsing="false" text="Não" />
+         </children>
+      </HBox>
+      <Text layoutX="143.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edição:" />
+      <TextField fx:id="txtEdicao" layoutX="156.0" layoutY="348.0" prefHeight="25.0" prefWidth="57.0" />
+      <Text layoutX="238.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editora" />
+      <TextField fx:id="txtEditora" layoutX="247.0" layoutY="348.0" prefHeight="25.0" prefWidth="116.0" />
+      <Text layoutX="378.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo de material" />
+      <ComboBox fx:id="comboBoxTipoMaterial" layoutX="378.0" layoutY="348.0" prefHeight="25.0" prefWidth="116.0" />
+      <Button defaultButton="true" layoutX="421.0" layoutY="420.0" mnemonicParsing="false" onAction="#handleSalvar" text="Salvar" />
    </children>
 </AnchorPane>

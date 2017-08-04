@@ -52,13 +52,16 @@ public class CadastroUsuarioController {
 	
 	private ToggleGroup grupo = new ToggleGroup();
 	
-	private ObservableList<String> tiposEndereco = FXCollections.observableArrayList("Alameda", "Avenida", "Beco", "Estrada", "Rodovia", "Rua", "Travessa");	
+	private ObservableList<String> tiposEndereco = FXCollections.observableArrayList("Alameda", "Avenida", "Beco", "Estrada", "Rodovia", "Rua", "Travessa");		
 	
-	
+	public CadastroUsuarioController() {
+		
+	}
+
 	@FXML
 	private void initialize() {
 		inicializarRadioButton();
-		comboboxTipoEndereco.getItems().addAll(tiposEndereco);		
+		comboboxTipoEndereco.getItems().addAll(tiposEndereco);	
 	}
 	
 	@FXML
@@ -70,7 +73,7 @@ public class CadastroUsuarioController {
 																				Long.parseLong(this.txtTelefone.getText()), 0, 0, true, this.chkBibliotecario.isSelected()));
 			
 			Alert alerta = new Alert(AlertType.INFORMATION);
-			alerta.setTitle("alteração de dados");
+			alerta.setTitle("Cadastro de Usuario");
 			alerta.setHeaderText("Usuario cadastrado");			
 			alerta.setContentText("Novo usuario cadastrado com sucesso");
 			alerta.showAndWait();
@@ -160,8 +163,8 @@ public class CadastroUsuarioController {
 		}
 		
 		Alert alerta = new Alert(AlertType.WARNING);
-		alerta.setTitle("alteração de dados");
-		alerta.setHeaderText("Não foi possivel alterar os dados");			
+		alerta.setTitle("Cadastro de Usuario");
+		alerta.setHeaderText("Não foi possivel realizar o cadastro");			
 		alerta.setContentText(mensagemErro);
 		alerta.showAndWait();
 		return false;
@@ -177,5 +180,7 @@ public class CadastroUsuarioController {
 		this.rbFuncionario.setToggleGroup(grupo);
 		this.rbFuncionario.setUserData("F");
 		this.rbFuncionario.setSelected(true);
+		
+	
 	}	
 }
