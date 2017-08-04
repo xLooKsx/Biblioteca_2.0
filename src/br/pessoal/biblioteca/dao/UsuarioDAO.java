@@ -109,8 +109,13 @@ public class UsuarioDAO {
 			this.stm.setString(7, usuarioTO.getComplLogradouro().toUpperCase());
 			this.stm.setLong(8, usuarioTO.getTelefone());
 			this.stm.setString(9, usuarioTO.getEmail().toUpperCase());
-		} catch (Exception e) {
-			// TODO: handle exception
+			this.stm.setBoolean(10, usuarioTO.getBibliotecario());
+			this.stm.setString(11, usuarioTO.getTipoUsuario().toUpperCase());
+			
+			this.stm.execute();
+			logger.log(Level.INFO, this.stm.toString());
+		} catch (SQLException e) {
+			 logger.log(Level.SEVERE, "Erro ao cadastrar novo usuario ", e);
 		}
 	}
 }

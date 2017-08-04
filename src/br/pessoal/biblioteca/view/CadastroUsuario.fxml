@@ -56,7 +56,7 @@
             <ComboBox fx:id="comboboxTipoEndereco" layoutX="22.0" layoutY="91.0" prefHeight="25.0" prefWidth="134.0" />
          </children>
       </Pane>
-      <Button defaultButton="true" layoutX="374.0" layoutY="430.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="115.0" text="Salvar" />
+      <Button defaultButton="true" layoutX="374.0" layoutY="430.0" mnemonicParsing="false" onAction="#handleSalvarUsuario" prefHeight="25.0" prefWidth="115.0" text="Salvar" />
       <Text layoutX="6.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastro de Usuário" textAlignment="CENTER" wrappingWidth="491.13671875">
          <font>
             <Font name="System Bold Italic" size="24.0" />
