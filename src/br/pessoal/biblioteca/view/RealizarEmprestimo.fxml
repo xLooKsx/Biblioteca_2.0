@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="459.0" prefWidth="503.0" style="-fx-border-color: #000;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.pessoal.biblioteca.view.RealizarEmprestimoController">
+   <children>
+      <Text layoutX="4.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emprestimo" textAlignment="CENTER" wrappingWidth="495.33984375">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="14.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id do Livro:" />
+      <TextField fx:id="txtIdLivro" layoutX="73.0" layoutY="53.0" prefHeight="25.0" prefWidth="261.0" />
+      <Button defaultButton="true" layoutX="352.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleBuscar" prefHeight="25.0" prefWidth="113.0" text="Buscar" />
+      <Pane fx:id="paneDadosLivro" disable="true" layoutX="10.0" layoutY="98.0" prefHeight="281.0" prefWidth="483.0" style="-fx-border-color: #000;">
+         <children>
+            <Text layoutX="25.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dados do Livro:">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </Text>
+            <Text layoutX="25.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" />
+            <Text layoutX="19.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição:" />
+            <Text layoutX="25.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autor:" />
+            <Text layoutX="131.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Publicação:" />
+            <Label fx:id="lblNome" layoutX="64.0" layoutY="63.0" prefHeight="17.0" prefWidth="377.0" text="(nome aqui)" />
+            <Label fx:id="lblAutor" layoutX="57.0" layoutY="163.0" text="(nome aqui)" />
+            <Label fx:id="lblPublicacao" layoutX="190.0" layoutY="163.0" prefHeight="17.0" prefWidth="96.0" text="(Data aqui)" />
+            <Label fx:id="lblCirculacao" layoutX="85.0" layoutY="223.0" text="(nome aqui)" />
+            <Text layoutX="28.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Circulação:" />
+            <Label fx:id="lblEdicao" layoutX="326.0" layoutY="163.0" prefHeight="17.0" prefWidth="72.0" text="(Ediçao aqui)" />
+            <Text layoutX="289.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edição:" />
+            <Label fx:id="lblEditora" layoutX="65.0" layoutY="195.0" prefHeight="17.0" prefWidth="72.0" text="(Editora aqui)" />
+            <Text layoutX="25.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editora:" />
+            <Label fx:id="lblEmprestado" layoutX="209.0" layoutY="195.0" prefHeight="17.0" prefWidth="82.0" text="(resposta aqui)" />
+            <Text layoutX="143.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emprestado:" />
+            <Text layoutX="164.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo do Material:" />
+            <Label fx:id="lblTipoMaterial" layoutX="254.0" layoutY="223.0" prefHeight="17.0" prefWidth="82.0" text="(Resposta aqui)" />
+            <Label fx:id="lblReserva" layoutX="378.0" layoutY="195.0" prefHeight="17.0" prefWidth="82.0" text="(Resposta aqui)" />
+            <Text layoutX="298.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Possui Reserva:" />
+            <Label fx:id="lblDescricao" layoutX="75.0" layoutY="93.0" prefHeight="65.0" prefWidth="390.0" text="Label" wrapText="true" />
+         </children>
+      </Pane>
+      <Button fx:id="btnConfirmar" disable="true" layoutX="401.0" layoutY="393.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Confirmar" />
+   </children>
+</AnchorPane>

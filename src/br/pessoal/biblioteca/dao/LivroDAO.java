@@ -69,7 +69,7 @@ public class LivroDAO {
 		}			
 	}
 	
-	public ObservableList<Integer> buscaDeLivro(String condicao){
+	public ObservableList<Integer> buscarLivroPorNome(String condicao){
 		
 		ObservableList<Integer> livrosBuscados = FXCollections.observableArrayList();
 		
@@ -192,6 +192,60 @@ public class LivroDAO {
 			logger.log(Level.INFO, this.stm.toString());
 		} catch (SQLException e) {
 			logger.log(Level.SEVERE, "Erro ao alterar Livro ", e);
+		}finally {
+			try {
+				this.stm.close();
+				this.connection.close();
+			} catch (SQLException e) {				
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public boolean verificaDisponibilidadeLivro(int idLivro) {
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append("SELECT nome_do_livro ")
+				.append("FROM acervo ")
+				.append("where circ = true ")
+				.append("AND is_emprestado = false ")
+				.append("AND reservado = false ")
+				.append("AND id_acervo = ?");
+			
+			this.stm = this.connection.prepareStatement(sql.toString());
+			this.stm.setInt(1, idLivro);
+			
+			this.rs = this.stm.executeQuery();
+			
+			logger.log(Level.INFO, this.stm.toString());
+			return rs.next();
+		} catch (SQLException e) {
+			throw new RuntimeException("Erro ao consultar situação do livro: "+e);
+		}finally {
+			try {
+				this.stm.close();
+				this.connection.close();
+			} catch (SQLException e) {				
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void realizarEmprestimoLivro(int idLivro) {
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append("UPDATE acervo ")
+				.append("SET is_emprestado = true ")
+				.append("WHERE id_acervo = ?");
+			
+			this.stm = this.connection.prepareStatement(sql.toString());
+			this.stm.setInt(1, idLivro);
+			
+			this.stm.execute();
+			
+			logger.log(Level.INFO, this.stm.toString());
+		} catch (Exception e) {
+			logger.log(Level.SEVERE, "Não foi possivel fazer a rezerva o livro ", e);
 		}
 	}
 }

@@ -30,6 +30,11 @@ public class PainelBaseController {
 	}
 	
 	@FXML
+	private void handleRealizarEmprestimo() {
+		this.main.mostrarEmprestimo();
+	}
+	
+	@FXML
 	private void handleAcervo() {
 		this.main.mostrarAcervo();
 	}
