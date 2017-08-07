@@ -131,6 +131,43 @@ public class BibliotecaUtils {
 		return camposModificados;
 	}	
 	
+	/**
+	 * Futuramente mostrar os campos que foram modificados
+	 * 
+	 * @param livroPrincipal
+	 * @param livroTemporario
+	 * @return
+	 */
+	public static String compararLivros(LivroTO livroPrincipal, LivroTO livroTemporario) {					
+		String camposModificados="";
+		
+		if(!livroPrincipal.getNomeLivro().trim().equals(livroTemporario.getNomeLivro().trim())) {
+			camposModificados += "#_Nome\n";
+		}
+		if (!livroPrincipal.getDescricao().trim().equals(livroTemporario.getDescricao().trim())) {
+			camposModificados += "#_Descrição\n";
+		}
+		if (!livroPrincipal.getAutor().trim().equals(livroTemporario.getAutor().trim())) {
+			camposModificados += "#_Autor\n";
+		}
+		if (!livroPrincipal.getEditora().trim().equals(livroTemporario.getEditora().trim())) {
+			camposModificados += "#_Editora\n";
+		}
+		if (!livroPrincipal.getTipo().trim().equals(livroTemporario.getTipo().trim())) {
+			camposModificados += "#_Tipo\n";
+		}
+		if(!(livroPrincipal.getEdicao() == livroTemporario.getEdicao())) {
+			camposModificados += "#_Edição\n";
+		}
+		if (!(livroPrincipal.getPublicacao().equals(livroTemporario.getPublicacao()))) {
+			camposModificados +="#_Publicação\n";
+		}
+		if (!(livroPrincipal.getCircular() == livroTemporario.getCircular())) {
+			camposModificados +="#_Circular";
+		}
+		return camposModificados;
+	}
+	
 	public static LivroTO livroEscolhido(int idLivro, Main main) {
 		ObservableList<LivroTO> acervo = main.getLivros();
 		for (LivroTO livroDaVez : acervo) {
@@ -149,7 +186,8 @@ public class BibliotecaUtils {
 		switch (tipo) {
 		case "L":
 			return "Livro";
-
+		case "M":
+			return "Multimidia";
 		default:
 			return "Revista";
 		}
