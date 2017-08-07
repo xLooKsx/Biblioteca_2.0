@@ -16,6 +16,7 @@ import br.pessoal.biblioteca.view.EdicaoLivroController;
 import br.pessoal.biblioteca.view.EmprestimosController;
 import br.pessoal.biblioteca.view.LoginController;
 import br.pessoal.biblioteca.view.PainelBaseController;
+import br.pessoal.biblioteca.view.RealizarEmprestimoController;
 import br.pessoal.biblioteca.view.RecuperacaoSenhaController;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -253,6 +254,21 @@ public class Main extends Application {
 		}catch (IOException e) {
 			logger.log(Level.SEVERE, "Erro ao mostrar janela de edição de livro ", e);
 		}
+	}
+	
+	public void mostrarEmprestimo() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("/br/pessoal/biblioteca/view/RealizarEmprestimo.fxml"));
+			AnchorPane emprestimo = (AnchorPane) loader.load();
+			
+			RealizarEmprestimoController realizarEmprestimoController = loader.getController();
+			realizarEmprestimoController.setMain(this);
+			
+			painelBase.setCenter(emprestimo);
+		} catch (IOException e) {
+			logger.log(Level.SEVERE, "Não foi possivel carregar o emprestimo: ", e);
+		}		
 	}
 	
 	public static void main(String[] args) {

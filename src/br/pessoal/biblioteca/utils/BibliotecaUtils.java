@@ -168,7 +168,7 @@ public class BibliotecaUtils {
 		return camposModificados;
 	}
 	
-	public static LivroTO livroEscolhido(int idLivro, Main main) {
+	public static LivroTO buscarLivroEscolhido(int idLivro, Main main) {
 		ObservableList<LivroTO> acervo = main.getLivros();
 		for (LivroTO livroDaVez : acervo) {
 			if (idLivro == livroDaVez.getIdLivro()) {

@@ -70,9 +70,9 @@ public class BuscaController {
 	private void handleBuscar() {
 		if (!this.txtTitulo.getText().isEmpty()) {			
 			this.livrosRetornados.clear();
-			resultadoBuscaLivros = new LivroDAO().buscaDeLivro(this.txtTitulo.getText());
+			resultadoBuscaLivros = new LivroDAO().buscarLivroPorNome(this.txtTitulo.getText());
 			for (Integer idLivroDaVez : resultadoBuscaLivros) {
-				livrosRetornados.add(BibliotecaUtils.livroEscolhido(idLivroDaVez, this.main));			
+				livrosRetornados.add(BibliotecaUtils.buscarLivroEscolhido(idLivroDaVez, this.main));			
 			}
 			this.tabelaLivro.setItems(livrosRetornados);
 			this.tabelaLivro.setDisable(false);

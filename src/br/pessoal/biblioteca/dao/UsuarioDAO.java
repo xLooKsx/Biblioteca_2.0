@@ -127,4 +127,8 @@ public class UsuarioDAO {
 			}
 		}
 	}
+	
+	public void adicionarEmprestimo(int matricula) {
+		
+	}
 }

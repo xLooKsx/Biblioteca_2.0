@@ -73,7 +73,7 @@ public class EdicaoLivroController {
 			this.livroTO.setEditora(this.txtEditora.getText().trim());
 			this.livroTO.setTipo(BibliotecaUtils.getTipoMaterial(this.cbTipoMaterial.getValue().toString().trim()));
 
-			LivroTO livroTemp = BibliotecaUtils.livroEscolhido(this.main.getLivroEscolhido().getIdLivro(), this.main);
+			LivroTO livroTemp = BibliotecaUtils.buscarLivroEscolhido(this.main.getLivroEscolhido().getIdLivro(), this.main);
 			if (BibliotecaUtils.compararLivros(this.livroTO, livroTemp).length() == 0) {
 				Alert alerta = new Alert(AlertType.ERROR);
 				alerta.setTitle("Alteração de Acervo");
