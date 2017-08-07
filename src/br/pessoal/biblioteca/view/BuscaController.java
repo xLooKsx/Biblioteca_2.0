@@ -68,8 +68,7 @@ public class BuscaController {
 
 	@FXML
 	private void handleBuscar() {
-		if (!this.txtTitulo.getText().isEmpty()) {
-			System.out.println(this.txtTitulo.getText());
+		if (!this.txtTitulo.getText().isEmpty()) {			
 			this.livrosRetornados.clear();
 			resultadoBuscaLivros = new LivroDAO().buscaDeLivro(this.txtTitulo.getText());
 			for (Integer idLivroDaVez : resultadoBuscaLivros) {

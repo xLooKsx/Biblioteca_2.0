@@ -127,6 +127,9 @@ public class CadastroLivroController {
 		if (this.comboBoxTipoMaterial.getValue() == null) {
 			mensagemErro +="Favor escolher o tipo de material\n";
 		}
+		if (this.dtPublicacao.getValue() == null || this.dtPublicacao.getValue().toString().toUpperCase().matches("[A-Z]*")) {
+			mensagemErro +="Data invalida\n";
+		}
 		
 		if (mensagemErro.length() == 0) {
 			return true;

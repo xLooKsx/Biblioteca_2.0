@@ -69,7 +69,7 @@
                   <Font name="System Italic" size="20.0" />
                </font>
             </Text>
-            <TextArea fx:id="txaDescricao" layoutX="74.0" layoutY="75.0" prefHeight="52.0" prefWidth="374.0" />
+            <TextArea fx:id="txaDescricao" editable="false" layoutX="74.0" layoutY="75.0" prefHeight="52.0" prefWidth="374.0" />
          </children>
       </Pane>
       <Text layoutX="10.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buscar" textAlignment="CENTER" wrappingWidth="483.0">

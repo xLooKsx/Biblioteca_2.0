@@ -28,6 +28,11 @@ public class PainelBaseController {
 	private void initialize() {		
 		
 	}
+	
+	@FXML
+	private void handleAcervo() {
+		this.main.mostrarAcervo();
+	}
 
 	@FXML
 	private void handleCadastroLivro() {
@@ -41,7 +46,7 @@ public class PainelBaseController {
 	
 	@FXML
 	private void handleBuscar() {
-		this.main.mostrarJanelaBusca();
+		this.main.mostrarBusca();
 	}
 	
 	@FXML
@@ -51,7 +56,7 @@ public class PainelBaseController {
 	
 	@FXML
 	private void handleAlterarSenha() {
-		this.main.mostraJanelaAlteracaoSenha();
+		this.main.mostraAlteracaoSenha();
 	}
 	
 	@FXML
@@ -62,7 +67,7 @@ public class PainelBaseController {
 	
 	@FXML
 	private void handleAlterarDados() {
-		main.mostraJanelaAlterarDados();
+		main.mostraAlterarDados();
 	}
 	
 	

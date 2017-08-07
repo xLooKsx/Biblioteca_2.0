@@ -141,7 +141,57 @@ public class LivroDAO {
 			} catch (SQLException e) {				
 				e.printStackTrace();
 			}
+		}		
+	}
+	
+	public void alterarLivro(LivroTO livroTO) {
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append("UPDATE acervo ")
+				.append("SET nome_do_livro=?, ")
+				.append("descricao=?, ")
+				.append("autor=?, ")
+				.append("publicacao=?, ")
+				.append("editora=?, ")
+				.append("tipo=? ")
+				.append("WHERE id_acervo=?");
+			
+			this.stm = this.connection.prepareStatement(sql.toString());
+			this.stm.setString(1, livroTO.getNomeLivro().toUpperCase());
+			this.stm.setString(2, livroTO.getDescricao().toUpperCase());
+			this.stm.setString(3, livroTO.getAutor().toUpperCase());
+			this.stm.setDate(4, Date.valueOf(livroTO.getPublicacao()));
+			this.stm.setString(5, livroTO.getEditora().toUpperCase());
+			this.stm.setString(6, livroTO.getTipo().toUpperCase());
+			this.stm.setInt(7, livroTO.getIdLivro());
+			
+			this.stm.execute();
+			logger.log(Level.INFO, this.stm.toString());
+		} catch (SQLException e) {
+			logger.log(Level.SEVERE, "Erro ao alterar livro ", e);
+		}finally {
+			try {
+				this.stm.close();
+				this.connection.close();
+			} catch (SQLException e) {				
+				e.printStackTrace();
+			}
 		}
-		
+	}
+	
+	public void deletarLivro(int idLivro) {
+		try {
+			StringBuilder sql = new StringBuilder();
+			sql.append("DELETE from acervo ")
+				.append("WHERE id_acervo = ?");
+			
+			this.stm = this.connection.prepareStatement(sql.toString());
+			this.stm.setInt(1, idLivro);
+			
+			this.stm.execute();
+			logger.log(Level.INFO, this.stm.toString());
+		} catch (SQLException e) {
+			logger.log(Level.SEVERE, "Erro ao alterar Livro ", e);
+		}
 	}
 }

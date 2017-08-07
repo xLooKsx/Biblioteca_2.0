@@ -8,9 +8,11 @@ import java.util.logging.Logger;
 import br.pessoal.biblioteca.to.EmprestimoTO;
 import br.pessoal.biblioteca.to.LivroTO;
 import br.pessoal.biblioteca.to.UsuarioTO;
+import br.pessoal.biblioteca.view.AcervoController;
 import br.pessoal.biblioteca.view.AlterarDadosController;
 import br.pessoal.biblioteca.view.AlterarSenhaController;
 import br.pessoal.biblioteca.view.BuscaController;
+import br.pessoal.biblioteca.view.EdicaoLivroController;
 import br.pessoal.biblioteca.view.EmprestimosController;
 import br.pessoal.biblioteca.view.LoginController;
 import br.pessoal.biblioteca.view.PainelBaseController;
@@ -32,7 +34,10 @@ public class Main extends Application {
 	private UsuarioTO usuarioTO;
 	private BorderPane painelBase;	
 	
+	private LivroTO livroEscolhido;
+	
 	private PainelBaseController painelBaseController;
+	private AcervoController acervoController;
 	
 	private ObservableList<EmprestimoTO> emprestimos = FXCollections.observableArrayList();
 	private ObservableList<LivroTO> livros = FXCollections.observableArrayList();
@@ -75,7 +80,7 @@ public class Main extends Application {
 		}
 	}
 	
-	public void mostrarJanelaBusca() {
+	public void mostrarBusca() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("/br/pessoal/biblioteca/view/Busca.fxml"));
@@ -136,7 +141,7 @@ public class Main extends Application {
 		}
 	}
 	
-	public void mostraJanelaAlteracaoSenha() {
+	public void mostraAlteracaoSenha() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("/br/pessoal/biblioteca/view/AlterarSenha.fxml"));
@@ -151,7 +156,7 @@ public class Main extends Application {
 		}
 	}
 	
-	public void mostraJanelaAlterarDados() {
+	public void mostraAlterarDados() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("/br/pessoal/biblioteca/view/AlterarDados.fxml"));
@@ -208,6 +213,48 @@ public class Main extends Application {
 		}
 	}
 	
+	public void mostrarAcervo() {
+		try {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("/br/pessoal/biblioteca/view/Acervo.fxml"));
+		AnchorPane acervo = (AnchorPane) loader.load();
+		
+		this.acervoController = loader.getController();
+		this.acervoController.setMain(this);
+		this.acervoController.inicializarTabela();
+		
+		painelBase.setCenter(acervo);
+		}catch (IOException e) {
+			logger.log(Level.SEVERE, "Não foi possivel carregar a jenela do acervo ", e);
+		}		
+	}
+	
+	public void mostraJanelaEdicaoLivro() {
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class.getResource("/br/pessoal/biblioteca/view/EdicaoLivro.fxml"));
+			AnchorPane editarLivro = (AnchorPane) loader.load();
+						
+			Stage janelaDialogo = new Stage();
+			janelaDialogo.setTitle("editar Livro");
+			janelaDialogo.getIcons().add(new Image("file:imagem/Bookmark.png"));
+			janelaDialogo.initModality(Modality.WINDOW_MODAL);
+			janelaDialogo.initOwner(this.primaryStage);
+			
+			Scene cena = new Scene(editarLivro);
+			janelaDialogo.setScene(cena);
+			
+			EdicaoLivroController edicaoAcervoController = loader.getController();
+			edicaoAcervoController.setMain(this);
+			edicaoAcervoController.setJanelaDialogo(janelaDialogo);
+			edicaoAcervoController.mostrarDados();
+			
+			janelaDialogo.showAndWait();
+		}catch (IOException e) {
+			logger.log(Level.SEVERE, "Erro ao mostrar janela de edição de livro ", e);
+		}
+	}
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -249,5 +296,17 @@ public class Main extends Application {
 
 	public PainelBaseController getPainelBaseController() {
 		return painelBaseController;
+	}
+
+	public LivroTO getLivroEscolhido() {
+		return livroEscolhido;
+	}
+
+	public void setLivroEscolhido(LivroTO livroEscolhido) {
+		this.livroEscolhido = livroEscolhido;
+	}
+
+	public AcervoController getAcervoController() {
+		return acervoController;
 	}	
 }

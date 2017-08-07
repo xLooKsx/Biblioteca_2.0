@@ -43,7 +43,7 @@ public class LoginController {
 				new EmprestimoDAO().listarEmprestimos(this.main.getUsuarioTO().getMatricula(), this.main);
 				this.main.setLivros(new LivroDAO().acervo());
 				main.mostraPainelBase();
-				main.mostrarJanelaBusca();
+				main.mostrarBusca();
 			}else {
 				this.lblMensagemErro.setText("Usuario ou senha invalidos");
 			}
